@@ -94,8 +94,8 @@ to facilitate natural and intuitive user interactions.',
     
     $skills = [
         'Python', 'C/C++', 'MySQL', 'PostgreSQL', 'JavaScript', 'MongoDB', 
-        'React', 'Next.js', 'Node.js', 'Flask', 'FastAPI','Multimodel'
-        'scikit-learn', 'PyTorch', 'TensorFlow', 'Transformers', 'XGBoost', 
+    'React', 'Next.js', 'Node.js', 'Flask', 'FastAPI', 'Multimodel',
+    'scikit-learn', 'PyTorch', 'TensorFlow', 'Transformers', 'XGBoost', 
         'LLMs', 'RAG', 'MLOps', 'AI Agents', 'Git', 'Docker', 'Kubernetes', 'MCP','Slenium', 'OpenCV', 'TTS APIs', 'Prompt Engineering', 'Computer Vision'
     ];
     
