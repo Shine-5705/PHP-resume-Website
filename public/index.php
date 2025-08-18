@@ -21,7 +21,7 @@ $app->get('/', function ($request, $response, $args) {
         'description' => 'Data Scientist and Machine Learning Engineer specializing in AI, deep learning, and NLP. I enhance software with prompt engineering and fine-tuning, build AI-powered solutions, and optimize data extraction processes. My portfolio features projects in chronic disease monitoring and cybercrime prediction, showcasing skills in Python, LLMs, RAG, and MLOps.',
         'keywords' => 'Data Scientist, Machine Learning Engineer, AI, Deep learning, NLP, LLMs, RAG, MLOps, Python, C++, SQL, React, Next.js, FastAPI, Docker, Prompt Engineering','MCP','Computer Vision','Selenium',
         'author' => 'Shine Gupta',
-        'url' => 'https://app.netlify.com/projects/shine-resume/deploys',
+        'url' => 'https://Shine-resume.onrender.com',
         'image' => 'https://' . $_SERVER['HTTP_HOST'] . '/assets/images/profile.webp',
         'type' => 'profile',
         'locale' => 'en_US',
