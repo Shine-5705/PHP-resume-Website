@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: shine-resume
+    env: docker
+    dockerfilePath: ./Dockerfile
+    buildCommand: ""
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: PORT
+        value: "8000"
+    autoDeploy: true
+    plan: starter

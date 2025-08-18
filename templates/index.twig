@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ seo.title }}</title>
+    
+    <meta name="description" content="{{ seo.description }}">
+    <meta name="keywords" content="{{ seo.keywords }}">
+    <meta name="author" content="{{ seo.author }}">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="{{ seo.url }}">
+    
+    <meta property="og:title" content="{{ seo.title }}">
+    <meta property="og:description" content="{{ seo.description }}">
+    <meta property="og:image" content="{{ seo.image }}">
+    <meta property="og:url" content="{{ seo.url }}">
+    <meta property="og:type" content="{{ seo.type }}">
+    <meta property="og:locale" content="{{ seo.locale }}">
+    <meta property="og:site_name" content="{{ seo.site_name }}">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ seo.title }}">
+    <meta name="twitter:description" content="{{ seo.description }}">
+    <meta name="twitter:image" content="{{ seo.image }}">
+    <meta name="twitter:creator" content="@shine_gupta17">
+    <meta name="twitter:site" content="@shine_gupta17">
+    
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Shine Gupta - Data Scientist">
+    
+    <meta name="theme-color" content="#ffffff">
+    <meta name="application-name" content="{{ seo.site_name }}">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    
+    <link rel="preload" href="/css/main.min.css" as="style">
+    <link rel="preload" href="/js/main.min.js" as="script">
+    <link rel="stylesheet" href="/css/main.min.css">
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Shine Gupta",
+        "jobTitle": "Data Scientist",
+        "description": "{{ seo.description }}",
+        "url": "{{ seo.url }}",
+        "image": "{{ seo.image }}",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Ghaziabad, UP",
+            "addressCountry": "India"
+        },
+        "sameAs": [
+            "https://github.com/Shine-5705",
+            "https://www.linkedin.com/in/shine-gupta-62b22b264",
+            "https://x.com/shine_gupta17"
+        ]
+    }
+    </script>
+</head>
+<body>
+    <main class="container">
+        <div class="content">
+            <div class="header-section">
+                <div class="profile-info">
+                    <h1>{{ profile.name }}</h1>
+                    <p class="description">{{ profile.description }}</p>
+                    <div class="location">
+                        <a class="profile-location" href="https://www.google.com/maps/place/Ghaziabad" target="_blank">
+                            <div class="contact-link">
+                                <img src="assets/icons/browser.png" alt="Link to the person location" />
+                            </div>
+                            <p>{{ profile.location }}</p> 
+                        </a>
+                    </div>
+                    
+                    <div class="contact-links">
+                        <a href="https://shine-resume.onrender.com" class="contact-link" target="_blank"><img src="assets/icons/browser.png" alt="Link to the website" /></a>
+                        <a href="mailto:guptashine5002@gmail.com" class="contact-link" target="_blank"><img src="assets/icons/mail.png" alt="Link to the email" /></a>
+                        <a href="tel:+918433135192" class="contact-link" target="_blank"><img src="assets/icons/phone.png" alt="Link to the mobile number" /></a>
+                        <a href="https://github.com/Shine-5705" class="contact-link" target="_blank"><img src="assets/icons/github.png" alt="Link to the github repo" /></a>
+                        <a href="https://www.linkedin.com/in/shine-gupta-62b22b26" class="contact-link" target="_blank"><img src="assets/icons/linkedin.png" alt="Link to the linkedin profile" /></a>
+                        <a href="https://x.com/shine_gupta17" class="contact-link" target="_blank"><img src="assets/icons/x.svg" alt="Link to the twitter/X profile" /></a>
+                    </div>
+                </div>
+                
+                <div class="profile-image">
+                    <img src="assets/images/profile.webp" alt="Image of {{ profile.name }}" />
+                </div>
+            </div>
+            
+            <div id="about-section">
+                <div class="about-info">
+                    <h2>About</h2>
+                    <div class="about-description">{{ profile.about }}</div>
+                </div>
+            </div>
+            
+            <section class="work-experience">
+                <h2 id="work-experience">Work Experience</h2>
+                <div class="work-list">
+                    {% for job in workExperience %}
+                    <article class="work-item">
+                        <div class="work-content">
+                            <div class="work-header">
+                                <div class="work-title-section">
+                                    <h3 class="work-company">
+                                        <a href="{{ job.url }}" target="_blank" rel="noopener noreferrer">{{ job.company }}</a>
+                                        <ul class="work-tags work-tags-desktop">
+                                            {% for tag in job.tags %}
+                                            <li><div class="tag">{{ tag }}</div></li>
+                                            {% endfor %}
+                                        </ul>
+                                    </h3>
+                                    <div class="work-period">{{ job.period }}</div>
+                                </div>
+                                <h4 class="work-position">{{ job.position }}</h4>
+                            </div>
+                            <div class="work-description">
+                                <div class="work-summary">{{ job.description }}</div>
+                                {% if job.details %}
+                                <ul class="work-details">
+                                    {% for detail in job.details %}
+                                    <li>{{ detail }}</li>
+                                    {% endfor %}
+                                </ul>
+                                {% endif %}
+                                <div class="work-tags-mobile">
+                                    <ul class="work-tags">
+                                        {% for tag in job.tags %}
+                                        <li><div class="tag">{{ tag }}</div></li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    {% endfor %}
+                </div>
+            </section>
+            
+            <section class="education-section">
+                <h2 id="education-section">Education</h2>
+                <div class="education-list">
+                    {% for edu in education %}
+                    <article class="education-item">
+                        <div class="education-content">
+                            <div class="education-header">
+                                <h3 class="education-institution">{{ edu.institution }}</h3>
+                                <div class="education-period">{{ edu.period }}</div>
+                            </div>
+                            <div class="education-degree">{{ edu.degree }}</div>
+                        </div>
+                    </article>
+                    {% endfor %}
+                </div>
+            </section>
+            <section class="skills-section">
+                <h2 id="skills-section">Skills</h2>
+                <ul class="skills-list">
+                    {% for skill in skills %}
+                    <li><div class="skill-tag">{{ skill }}</div></li>
+                    {% endfor %}
+                </ul>
+            </section>
+
+            <section class="projects-section">
+                <h2 id="side-projects">Side projects</h2>
+                <div class="projects-grid">
+                    {% for project in sideProjects %}
+                    <article class="project-card">
+                        <div class="project-content">
+                            <div class="project-header">
+                                <div class="project-title-section">
+                                    <h3 class="project-title">
+                                        <a href="{{ project.url }}" target="_blank" rel="noopener noreferrer">
+                                            {{ project.name }}
+                                            {% if project.active %}
+                                            <span class="active-indicator"></span>
+                                            {% endif %}
+                                        </a>
+                                        <div class="project-url">{{ project.url|replace({'https://': '', 'http://': ''}) }}</div>
+                                    </h3>
+                                    <p class="project-description">{{ project.description }}</p>
+                                </div>
+                            </div>
+                            <div class="project-footer">
+                                <ul class="project-tags">
+                                    {% for tech in project.technologies %}
+                                    <li><div class="project-tag">{{ tech }}</div></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </article>
+                    {% endfor %}
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="/js/main.min.js"></script>
+</body>
+</html>
