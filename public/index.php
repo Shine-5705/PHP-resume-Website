@@ -21,7 +21,7 @@ $app->get('/', function ($request, $response, $args) {
         'description' => 'Data Scientist and Machine Learning Engineer specializing in AI, deep learning, and NLP. I enhance software with prompt engineering and fine-tuning, build AI-powered solutions, and optimize data extraction processes. My portfolio features projects in chronic disease monitoring and cybercrime prediction, showcasing skills in Python, LLMs, RAG, and MLOps.',
         'keywords' => 'Data Scientist, Machine Learning Engineer, AI, Deep learning, NLP, LLMs, RAG, MLOps, Python, C++, SQL, React, Next.js, FastAPI, Docker, Prompt Engineering','MCP','Computer Vision','Selenium',
         'author' => 'Shine Gupta',
-        'url' => 'https://shine-resume.onrender.com',
+        'url' => 'https://Shine-resume.onrender.com',
         'image' => 'https://' . $_SERVER['HTTP_HOST'] . '/assets/images/profile.webp',
         'type' => 'profile',
         'locale' => 'en_US',
@@ -34,7 +34,7 @@ $app->get('/', function ($request, $response, $args) {
             'url' => 'https://turing.com/',
             'position' => 'Data Scientist',
             'period' => 'Oct 2023 - Present',
-            'description' => 'Data Scientist at a tech company specializing in AI talent solutions and LLM-driven software development.',
+            'description' => 'Data Scientist at Turing, specializing in AI and machine learning solutions for software performance enhancement.',
             'details' => [
                 'Enhanced LLM-driven software performance, increasing multi-turn conversation quality by 35% using prompt engineering and response tuning. Built internal dev tools using Python, Postgres, and Neo4j for scalable evaluations and experimentation',
             ],
@@ -55,7 +55,7 @@ $app->get('/', function ($request, $response, $args) {
         ],
         [
             'company' => 'Business Quant',
-            'url' => '#',
+            'url' => 'http://businessquant.com/',
             'position' => 'Machine Learning Engineer',
             'period' => 'Jun 2023 - Sept 2024',
             'description' => 'Machine Learning Engineer at a financial technology company focused on automated data extraction and NLP solutions.',
@@ -66,23 +66,23 @@ $app->get('/', function ($request, $response, $args) {
             'tags' => ['Python', 'PaddleOCR', 'NLTK', 'NLP', 'Machine Learning']
         ],
         [
-            'company' => 'Enshrine Global Systems',
-            'url' => '#',
+            'company' => 'Gradstem',
+            'url' => 'https://www.gradstem.com/',
             'position' => 'Data Scientist',
             'period' => 'July 2024 - Nov 2024',
-            'description' => 'Machine Learning Engineer at a financial technology company focused on automated data extraction and NLP solutions.',
+            'description' => 'Data Scientist at a software development company specializing in AI solutions and automation.',
             'details' => [
-                'Improved PaddleOCR extraction precision by 20% by fine-tuning models on currency-specific datasets created using NLTK and openAI.',
-                'Applied custom NLP parsing algorithms on financial reports to automate metrics extraction, cutting time by 30%'
+                'Developed AI-based autonomous agents for form-filling and chatbot applications using NLP techniques',
+                'Integrated AI solutions for business use cases, streamlining automated processes and reducing manual efforts.'
             ],
-            'tags' => ['Python', 'PaddleOCR', 'NLTK', 'NLP', 'Machine Learning']
+            'tags' => ['Python', 'Selenium', 'NLTK', 'NLP', 'Machine Learning','puppeteer', 'AI Agents', 'Git', 'Docker', 'Kubernetes', 'MLOps', 'LLMs', 'RAG', 'Prompt Engineering']
         ],
         [
             'company' => 'Drifko',
             'url' => '#',
             'position' => 'AI/ML Developer',
             'period' => 'April 2024 - July 2024',
-            'description' => 'Machine Learning Engineer at a financial technology company focused on automated data extraction and NLP solutions.',
+            'description' => 'AI/ML Developer at a startup focused on AI-driven solutions for business automation and data processing.',
             'details' => [
                 'Designed and implemented chatbots using Rasa and Chainlit frameworks, leveraging large language models (LLMs)
 to facilitate natural and intuitive user interactions.',
@@ -115,7 +115,49 @@ to facilitate natural and intuitive user interactions.',
             'Github' => 'https://github.com/dorkydhruv/Cyber-Rakshak'
             'technologies' => ['Machine Learning', 'Deep Learning', 'TensorFlow', 'Keras', 'Flask', 'Flutter', 'Firebase', 'Python'],
             'active' => true
-        ]
+        ],
+        [
+            'name' => 'AutoAttend_Gmeet',
+            'url' => 'https://youtu.be/qDpPLjahspM',
+            'description' => 'Developed an automation tool to auto-join Google Meet, monitor captions, detect name mentions, and sync emoji reactions in real-time using Playwright.',
+            'Github' => 'https://github.com/Shine-5705/AutoAttend_Gmeet'
+            'technologies' => ['Playwright', 'Deep Learning', 'Chromium', 'JSON & TXT logging for transcripts', 'FastAPI', 'Docker', 'Python'],
+            'active' => true
+        ],
+        [
+            'name' => 'CSV Summarizer & Emailer',
+            'url' => 'https://csv-summarizer-emailer.onrender.com/',
+            'description' => 'Built a Streamlit application to analyze CSV data, generate AI-powered summaries with Mistral, and send insights via email with PDF and CSV attachments.',
+            'Github' => 'https://github.com/Shine-5705/csv-monitor-summarizer'
+            'technologies' => ['Streamlit', 'Deep Learning', 'Mistral API', 'Gmail SMTP', 'FastAPI', 'Docker', 'Python','wkhtmltopdf','Render'],
+            'active' => true
+        ]      ,
+        [
+            'name' => 'India Art, Culture & Tourism Dashboard',
+            'url' => 'https://youtu.be/qDpPLjahspM',
+            'description' => 'Developed a data-driven Streamlit dashboard with Snowflake integration to showcase India’s cultural heritage, analyze tourism patterns, and promote responsible tourism through interactive visualizations.',
+            'Github' => 'https://github.com/Shine-5705/bharat-culture-tourism-analytics'
+            'technologies' => ['Streamlit', 'Machine Learning', 'PyDeck', 'Snowflake', 'Government tourism & culture datasets', 'Docker', 'Python', 'Git', 'FastAPI'],
+            'active' => true
+        ],
+        [
+            'name' => 'LinkedIn Auto Connect Agent',
+            'url' => 'https://github.com/Shine-5705/Connect_over_LinkedIN',
+            'description' => 'Built a Selenium-powered LinkedIn automation agent with a Streamlit interface to search, filter, and auto-connect with professionals while securely managing credentials and logging interactions.',
+            'Github' => 'https://github.com/Shine-5705/Connect_over_LinkedIN'
+            'technologies' => ['Streamlit', 'Machine Learning', 'Selenium', 'Docker', 'Python', 'GitHub', 'FastAPI'],
+            'active' => true
+        ],
+        [
+            'name' => 'Real Time Violence Detection',
+            'url' => 'https://github.com/Shine-5705/Real-Time-Violence-Detection',
+            'description' => 'Developed a real-time violence detection system using a Vision Transformer (ViViT) model integrated with Twilio to trigger automated calls and SMS alerts when violence is detected through a live camera feed.',
+            'Github' => 'https://github.com/Shine-5705/Real-Time-Violence-Detection'
+            'technologies' => ['ViViT', 'OpenCV', 'TensorFlow', 'Docker', 'Python', 'GitHub', 'Twilio API'],
+            'active' => true
+        ]               
+        
+           
     ];
     
     $education = [

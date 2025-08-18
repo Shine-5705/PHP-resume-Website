@@ -49,6 +49,6 @@ COPY composer.json ./
 RUN chown -R nginx:nginx /var/www/html && \
     chmod -R 755 /var/www/html
 
-EXPOSE 8000
+EXPOSE 8080
 
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
