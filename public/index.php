@@ -75,7 +75,7 @@ $app->get('/', function ($request, $response, $args) {
                 'Developed AI-based autonomous agents for form-filling and chatbot applications using NLP techniques',
                 'Integrated AI solutions for business use cases, streamlining automated processes and reducing manual efforts.'
             ],
-            'tags' => ['Python', 'Selenium', 'NLTK', 'NLP', 'Machine Learning','puppeteer', 'AI Agents', 'Git', 'Docker', 'Kubernetes', 'MLOps', 'LLMs', 'RAG', 'Prompt Engineering']
+            'tags' => ['Selenium',  'NLP', 'puppeteer', 'AI Agents', 'MLOps', 'LLMs', 'RAG']
         ],
         [
             'company' => 'Drifko',
@@ -87,14 +87,14 @@ $app->get('/', function ($request, $response, $args) {
                 'Designed and implemented chatbots using Rasa and Chainlit frameworks, leveraging large language models (LLMs)
 to facilitate natural and intuitive user interactions.',
             ],
-            'tags' => ['Python', 'Rasa', 'Chainlit', 'NLP', 'Machine Learning', 'LLMs', 'Docker', 'Git']
+            'tags' => ['Rasa', 'Chainlit', 'NLP', 'Machine Learning', 'LLMs', 'Docker']
         ]
         
     ];
     
     $skills = [
         'Python', 'C/C++', 'MySQL', 'PostgreSQL', 'JavaScript', 'MongoDB', 
-        'React', 'Next.js', 'Node.js', 'Flask', 'FastAPI',
+        'React', 'Next.js', 'Node.js', 'Flask', 'FastAPI','Multimodel'
         'scikit-learn', 'PyTorch', 'TensorFlow', 'Transformers', 'XGBoost', 
         'LLMs', 'RAG', 'MLOps', 'AI Agents', 'Git', 'Docker', 'Kubernetes', 'MCP','Slenium', 'OpenCV', 'TTS APIs', 'Prompt Engineering', 'Computer Vision'
     ];
