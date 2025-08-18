@@ -112,7 +112,7 @@ to facilitate natural and intuitive user interactions.',
             'name' => 'CyberRakshak',
             'url' => 'https://github.com/dorkydhruv/Cyber-Rakshak',
             'description' => 'AI-based Cybercrime Prediction System with 82% accuracy, integrating real-time risk scoring. Winner of Innotech 2023 Award',
-            'Github' => 'https://github.com/dorkydhruv/Cyber-Rakshak'
+            'Github' => 'https://github.com/dorkydhruv/Cyber-Rakshak',
             'technologies' => ['Machine Learning', 'Deep Learning', 'TensorFlow', 'Keras', 'Flask', 'Flutter', 'Firebase', 'Python'],
             'active' => true
         ],
@@ -131,7 +131,7 @@ to facilitate natural and intuitive user interactions.',
             'Github' => 'https://github.com/Shine-5705/csv-monitor-summarizer',
             'technologies' => ['Streamlit', 'Deep Learning', 'Mistral API', 'Gmail SMTP', 'FastAPI', 'Docker', 'Python','wkhtmltopdf','Render'],
             'active' => true
-        ]      ,
+        ],
         [
             'name' => 'India Art, Culture & Tourism Dashboard',
             'url' => 'https://youtu.be/qDpPLjahspM',
