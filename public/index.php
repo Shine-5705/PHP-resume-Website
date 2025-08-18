@@ -178,7 +178,7 @@ to facilitate natural and intuitive user interactions.',
         'profile' => [
             'name' => 'Shine Gupta',
             'description' => 'Data Scientist and Machine Learning Engineer specializing in AI, deep learning, and NLP.',
-            'location' => 'Ghaziabad, Uttar Pradesh, India',
+            'location' => 'Delhi, India',
             'about' => 'Data Scientist and Machine Learning Engineer specializing in AI, deep learning, and NLP. I enhance software with prompt engineering and fine-tuning, build AI-powered solutions, and optimize data extraction processes.'
         ],
         'workExperience' => $workExperience,
