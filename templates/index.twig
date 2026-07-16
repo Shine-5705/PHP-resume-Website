@@ -28,7 +28,7 @@
     
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Shine Gupta - Data Scientist">
+    <meta property="og:image:alt" content="Shine Gupta - AI Engineer & Full-Stack Developer">
     
     <meta name="theme-color" content="#ffffff">
     <meta name="application-name" content="{{ seo.site_name }}">
@@ -46,13 +46,13 @@
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Shine Gupta",
-        "jobTitle": "Data Scientist",
+        "jobTitle": "AI Engineer & Full-Stack Developer",
         "description": "{{ seo.description }}",
         "url": "{{ seo.url }}",
         "image": "{{ seo.image }}",
         "address": {
             "@type": "PostalAddress",
-            "addressLocality": "Ghaziabad, UP",
+            "addressLocality": "Bengaluru",
             "addressCountry": "India"
         },
         "sameAs": [
@@ -71,7 +71,7 @@
                     <h1>{{ profile.name }}</h1>
                     <p class="description">{{ profile.description }}</p>
                     <div class="location">
-                        <a class="profile-location" href="https://www.google.com/maps/place/Ghaziabad" target="_blank">
+                        <a class="profile-location" href="https://www.google.com/maps/place/Bengaluru" target="_blank">
                             <div class="contact-link">
                                 <img src="assets/icons/browser.png" alt="Link to the person location" />
                             </div>
@@ -119,7 +119,7 @@
                                     </h3>
                                     <div class="work-period">{{ job.period }}</div>
                                 </div>
-                                <h4 class="work-position">{{ job.position }}</h4>
+                                <h4 class="work-position">{{ job.position }}{% if job.location %} · {{ job.location }}{% endif %}</h4>
                             </div>
                             <div class="work-description">
                                 <div class="work-summary">{{ job.description }}</div>
@@ -160,17 +160,85 @@
                     {% endfor %}
                 </div>
             </section>
+
+            <section class="publications-section">
+                <h2 id="publications">Publications</h2>
+                <div class="publications-list">
+                    {% for pub in publications %}
+                    <article class="publication-item">
+                        <div class="publication-content">
+                            <div class="publication-header">
+                                <h3 class="publication-title">{{ pub.title }}</h3>
+                                <div class="publication-meta">
+                                    <span class="publication-status">{{ pub.status }}</span>
+                                    <span class="publication-period">{{ pub.period }}</span>
+                                </div>
+                            </div>
+                            <div class="publication-authors">{{ pub.authors }}</div>
+                            <div class="publication-venue">{{ pub.venue }}</div>
+                        </div>
+                    </article>
+                    {% endfor %}
+                </div>
+            </section>
+
+            <section class="hackathons-section">
+                <h2 id="hackathons">Hackathons</h2>
+                <p class="section-intro">9+ hackathon wins — a glimpse of recent highlights.</p>
+                <div class="hackathons-list">
+                    {% for hackathon in hackathons %}
+                    <article class="hackathon-item">
+                        <div class="hackathon-content">
+                            <div class="hackathon-header">
+                                <div class="hackathon-title-section">
+                                    <h3 class="hackathon-title">
+                                        {{ hackathon.title }}
+                                        <span class="hackathon-result">{{ hackathon.result }}</span>
+                                    </h3>
+                                    <div class="hackathon-period">{{ hackathon.period }} · {{ hackathon.location }}</div>
+                                </div>
+                            </div>
+                            <div class="hackathon-project">Project: <strong>{{ hackathon.project }}</strong></div>
+                            <div class="hackathon-description">{{ hackathon.description }}</div>
+                            {% if hackathon.highlights %}
+                            <ul class="hackathon-highlights">
+                                {% for highlight in hackathon.highlights %}
+                                <li>{{ highlight }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                            <div class="hackathon-footer">
+                                <ul class="hackathon-tags">
+                                    {% for tag in hackathon.tags %}
+                                    <li><div class="tag">{{ tag }}</div></li>
+                                    {% endfor %}
+                                </ul>
+                                <a href="{{ hackathon.linkedin }}" class="hackathon-link" target="_blank" rel="noopener noreferrer">View LinkedIn post →</a>
+                            </div>
+                        </div>
+                    </article>
+                    {% endfor %}
+                </div>
+            </section>
+
             <section class="skills-section">
                 <h2 id="skills-section">Skills</h2>
-                <ul class="skills-list">
-                    {% for skill in skills %}
-                    <li><div class="skill-tag">{{ skill }}</div></li>
+                <div class="skills-categories">
+                    {% for category, skills in skillCategories %}
+                    <div class="skill-category">
+                        <h3 class="skill-category-title">{{ category }}</h3>
+                        <ul class="skills-list">
+                            {% for skill in skills %}
+                            <li><div class="skill-tag">{{ skill }}</div></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
                     {% endfor %}
-                </ul>
+                </div>
             </section>
 
             <section class="projects-section">
-                <h2 id="side-projects">Side projects</h2>
+                <h2 id="side-projects">Projects</h2>
                 <div class="projects-grid">
                     {% for project in sideProjects %}
                     <article class="project-card">

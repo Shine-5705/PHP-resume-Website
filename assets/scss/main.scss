@@ -387,6 +387,19 @@ button:hover {
     font-weight: 700;
 }
 
+.skills-categories {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.skill-category-title {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 0.375rem;
+}
+
 .skills-list {
     display: flex;
     list-style: none;
@@ -606,6 +619,197 @@ button:hover {
     margin-top: 0.5rem;
     color: rgba(0, 0, 0, 0.8);
     line-height: 1.25rem;
+}
+
+.section-intro {
+    font-size: 0.8125rem;
+    color: #6b7280;
+    margin-top: -0.25rem;
+}
+
+.publications-section,
+.hackathons-section {
+    display: flex;
+    min-height: 0;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.publications-section h2,
+.hackathons-section h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.publications-list,
+.hackathons-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.publication-item,
+.hackathon-item {
+    border-radius: 0.5rem;
+    background-color: white;
+    padding: 0.25rem 0;
+}
+
+.publication-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+@media (min-width: 640px) {
+    .publication-header {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 1rem;
+    }
+}
+
+.publication-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.35;
+    text-wrap: pretty;
+}
+
+.publication-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+}
+
+.publication-status {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 0.375rem;
+    padding: 0.125rem 0.5rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    background-color: #ecfdf5;
+    color: #047857;
+    white-space: nowrap;
+}
+
+.publication-period {
+    font-size: 0.75rem;
+    color: #6b7280;
+    font-variant-numeric: tabular-nums;
+}
+
+.publication-authors,
+.publication-venue {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+    font-size: 0.75rem;
+    color: rgba(0, 0, 0, 0.75);
+    margin-top: 0.375rem;
+    text-wrap: pretty;
+}
+
+.publication-venue {
+    color: #6b7280;
+}
+
+.hackathon-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.hackathon-title {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.hackathon-result {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 0.375rem;
+    padding: 0.125rem 0.5rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    background-color: #fef3c7;
+    color: #92400e;
+    white-space: nowrap;
+}
+
+.hackathon-period {
+    font-size: 0.8125rem;
+    color: #6b7280;
+}
+
+.hackathon-project {
+    font-size: 0.8125rem;
+    margin-top: 0.375rem;
+    color: rgba(0, 0, 0, 0.85);
+}
+
+.hackathon-description {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+    font-size: 0.75rem;
+    color: rgba(0, 0, 0, 0.8);
+    margin-top: 0.5rem;
+    line-height: 1.4;
+    text-wrap: pretty;
+}
+
+.hackathon-highlights {
+    list-style-type: disc;
+    list-style-position: inside;
+    margin-top: 0.5rem;
+}
+
+.hackathon-highlights li {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+    font-size: 0.75rem;
+    color: rgba(0, 0, 0, 0.8);
+    line-height: 1.35;
+    text-wrap: pretty;
+}
+
+.hackathon-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.625rem;
+}
+
+@media (min-width: 640px) {
+    .hackathon-footer {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+.hackathon-tags {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+}
+
+.hackathon-link {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #2563eb;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.hackathon-link:hover {
+    text-decoration: underline;
 }
 
 @media (min-width: 768px) {
