@@ -18,7 +18,7 @@ $app->get('/', function ($request, $response, $args) {
     
     $seo = [
         'title' => 'Shine Gupta - AI Engineer & Full-Stack Developer',
-        'description' => 'AI Engineer and Full-Stack Developer building production LLM systems, with 3+ years building, fine-tuning, and deploying production ML
+        'description' => 'AI Engineer and Full-Stack Developer with 3 years of experience building production LLM systems, with 3+ years building, fine-tuning, and deploying production ML
 and LLM systems for global clients. Specialized in RAG, RLHF, SFT, LLM evaluation, and MLOps on AWS and GCP. multi-agent architectures, and customer-facing web applications.',
         'keywords' => 'AI Engineer, Full-Stack Developer, LLMs, RAG, AI Agents, LangGraph, MCP, React, Next.js, FastAPI, Python, TypeScript, MLOps, AWS, GCP, Docker, Kubernetes',
         'author' => 'Shine Gupta',
@@ -47,7 +47,7 @@ and LLM systems for global clients. Specialized in RAG, RLHF, SFT, LLM evaluatio
             'company' => 'Chatverse.io',
             'url' => 'https://chatverse.io/',
             'position' => 'Founder',
-            'period' => 'Aug 2025 - Present',
+            'period' => 'Aug 2025 - April 2026',
             'description' => 'Founded and shipped Chatverse, an AI no-code automation platform that turns plain English into real actions across 15+ tools.',
             'details' => [
                 'Built Chatverse, an AI no-code automation platform that turns plain English into real actions across Instagram, Gmail, Calendar, HubSpot, Notion, and 15+ tools using a custom agentic engine.',
