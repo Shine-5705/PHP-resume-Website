@@ -31,6 +31,18 @@ and LLM systems for global clients. Specialized in RAG, RLHF, SFT, LLM evaluatio
     
     $workExperience = [
         [
+            'company' => 'Re-Forge',
+            'url' => '#',
+            'position' => 'Founder',
+            'period' => '2026 - Present',
+            'description' => 'Building an evolution layer for AI coding agents that learns from real engineering trajectories.',
+            'details' => [
+                'Re-Forge mines agent interactions, tool calls, failures, and successful resolutions to discover reusable behaviors and evaluate interventions.',
+                'Continuously improves how agents perform organization-specific engineering tasks through eval-driven learning from production trajectories.'
+            ],
+            'tags' => ['Self Evolving Agents' 'Evals', 'Claude Code', 'Cursor', 'Codex', 'MCP']
+        ],
+        [
             'company' => 'Gnani.ai',
             'url' => 'https://www.gnani.ai/',
             'position' => 'Full-Stack Developer — Founder\'s Office',
@@ -257,6 +269,13 @@ and LLM systems for global clients. Specialized in RAG, RLHF, SFT, LLM evaluatio
     ];
     
     $sideProjects = [
+        [
+            'name' => 'Re-Forge',
+            'url' => '#',
+            'description' => 'Evolution layer for AI coding agents that learns from real engineering trajectories—mining agent interactions, tool calls, failures, and successful resolutions to discover reusable behaviors and continuously improve organization-specific engineering tasks.',
+            'technologies' => ['AI Agents', 'Evals', 'Claude Code', 'Cursor', 'Codex', 'MCP', 'LangGraph'],
+            'active' => true
+        ],
         [
             'name' => 'AI Mathematical Olympiad Solver',
             'url' => '#',
