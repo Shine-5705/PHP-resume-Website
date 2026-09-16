@@ -1,0 +1,6 @@
+[build]
+  command = "bash netlify-build.sh"
+  publish = "dist"
+
+[build.environment]
+  PHP_VERSION = "8.2"
