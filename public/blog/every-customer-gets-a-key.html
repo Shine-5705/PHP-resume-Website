@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Every Customer Gets Their Own Key - Blog by Shine Gupta</title>
+  <meta name="description" content="Re-Forge started as one shared secret for one team. The week it had to become a real product for other teams, that secret became the whole problem.">
+  <link rel="stylesheet" href="/css/theme.css">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+<body>
+  <div class="background-shapes" aria-hidden="true">
+    <div class="blur-orb"></div>
+    <div class="blur-orb"></div>
+    <div class="blur-orb"></div>
+  </div>
+  <nav class="floating-nav" aria-label="Primary">
+    <div class="floating-nav__container">
+      <a href="/" class="floating-nav__link">Home</a>
+      <a href="/#side-projects" class="floating-nav__link">Projects</a>
+      <a href="/blog/" class="floating-nav__link floating-nav__link--active" aria-current="page">Blog</a>
+      <a href="/hackathons" class="floating-nav__link">Hackathons</a>
+    </div>
+  </nav>
+  <main class="page-container">
+    <a href="/blog/" class="back-link">&larr; Back to all posts</a>
+    <article class="post-shell">
+      <h1 class="post-title">Every Customer Gets Their Own Key</h1>
+      <div class="post-meta">Sep 2026 <span class="reading-time">7 min read</span></div>
+      <div class="post-meta" style="margin-top:-4px;">Notes from turning Re-Forge from "one team's tool" into something other teams could actually join</div>
+      <div class="post-categories"><span>Engineering</span> <span>Re-Forge</span> <span>Security</span></div>
+
+      <div class="post-body">
+
+        <p>Re-Forge started the way most internal tools do: it worked, it was ours, and exactly one secret proved that. Every device our hooks ran on carried the same token. It authenticated every request. It could read every session anyone on the team had ever captured, and it could revoke anyone's access - because it <em>was</em> everyone's access, all at once. That's a fine trade when "everyone" is two founders and a laptop each. It stops being fine the moment a second company wants to run Re-Forge on their own team.</p>
+
+        <p>This is the log of what that transition actually cost - not the roadmap version, the real one, including the parts where I had to undo a decision I'd already written down as final.</p>
+
+        <h2>What one shared secret actually grants</h2>
+
+        <p>I want to be precise about this, because "shared token" sounds abstract until you write down what it lets someone do. Our token authenticated <em>every</em> route: read every collected session, change server settings, revoke any device. Anyone who downloaded a build and pulled it apart had it. Fine for a two-person pilot. Not something I would ever hand to a customer.</p>
+
+        <p>We'd also already been burned by the shape of this problem once, in miniature: an early version of our config endpoint returned more than it should have to a caller that hadn't proven who it was. Small blast radius that time, because there was only one org's data behind it. The lesson stuck anyway: <strong>a single shared secret doesn't just risk a leak, it makes every future leak leak everything.</strong> Whatever replaced it had to shrink that number from "everyone" to "one person" by construction, not by promise.</p>
+
+        <div class="insight-box">
+          <strong>The rule I wrote down before touching any code.</strong> A token identifies a person, not a download. Whatever boundary decides "which company's data is this" stays separate from whatever boundary decides "is this credential still good" - collapsing the two together is exactly how a shared secret happens in the first place.
+        </div>
+
+        <h2>The four things, not three</h2>
+
+        <p>Once you say it out loud - a company, its people, its repositories - the model sounds obvious. It mostly is. The part that isn't obvious is that people and repositories don't connect to each other directly. Two employees can both be pushing to the same repository from two different laptops, and neither of those laptops should ever be able to see the other's captured sessions just because they share a codebase. The thing that actually ties a person to a repository is the device sitting between them.</p>
+
+        <figure>
+          <svg viewBox="0 0 620 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="One organization contains many people and many repositories. Each person owns one or more devices. Each device is registered against one or more repositories. A device belongs to exactly one person, and a repository can have devices from many different people.">
+            <rect x="240" y="14" width="140" height="48" rx="6" fill="none" stroke="#4f46e5" stroke-width="2"/>
+            <text x="310" y="34" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="700" font-size="13" fill="rgba(15,23,42,0.85)">ORG</text>
+            <text x="310" y="50" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="9.5" fill="rgba(15,23,42,0.55)">one per customer</text>
+
+            <line x1="280" y1="62" x2="120" y2="98" stroke="rgba(15,23,42,0.35)" stroke-width="1.5"/>
+            <line x1="340" y1="62" x2="500" y2="98" stroke="rgba(15,23,42,0.35)" stroke-width="1.5"/>
+
+            <rect x="40" y="104" width="160" height="50" rx="6" fill="none" stroke="#f472b6" stroke-width="2"/>
+            <text x="120" y="126" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="700" font-size="13" fill="rgba(15,23,42,0.85)">PERSON</text>
+            <text x="120" y="142" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="9.5" fill="rgba(15,23,42,0.55)">email, role, token hash</text>
+
+            <rect x="420" y="104" width="160" height="50" rx="6" fill="none" stroke="#22c1a1" stroke-width="2"/>
+            <text x="500" y="126" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="700" font-size="13" fill="rgba(15,23,42,0.85)">REPOSITORY</text>
+            <text x="500" y="142" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="9.5" fill="rgba(15,23,42,0.55)">git remote identity</text>
+
+            <rect x="220" y="220" width="180" height="58" rx="6" fill="none" stroke="rgba(15,23,42,0.75)" stroke-width="2"/>
+            <text x="310" y="244" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="700" font-size="13" fill="rgba(15,23,42,0.85)">DEVICE</text>
+            <text x="310" y="260" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="9.5" fill="rgba(15,23,42,0.55)">this laptop, this person</text>
+
+            <line x1="140" y1="154" x2="255" y2="220" stroke="#f472b6" stroke-width="1.8"/>
+            <text x="160" y="192" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="9.5" fill="#f472b6">owns 1+</text>
+
+            <line x1="480" y1="154" x2="365" y2="220" stroke="#22c1a1" stroke-width="1.8" stroke-dasharray="4 3"/>
+            <text x="460" y="192" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="9.5" fill="#22c1a1">registered by many</text>
+
+            <text x="310" y="296" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="9.5" fill="rgba(15,23,42,0.5)">the dashed line is the join no one designs on the first pass</text>
+          </svg>
+          <figcaption>Org, person, and repository are the obvious three. Device is the one that quietly does the actual connecting - and it's the piece a single-shared-token design never needed, because there was only ever one org to begin with.</figcaption>
+        </figure>
+
+        <h2>The route that got left behind</h2>
+
+        <p>Before any of the multi-tenant work, I ran a plain audit of every network call our desktop app and our hooks make, against every route our backend actually serves. One didn't match. The device-join flow - what runs the very first time a fresh install talks to our server - called an endpoint that had quietly stopped existing during an earlier rewrite. Nobody had noticed, for one reason: every device that had ever joined, had joined <em>before</em> that rewrite. The bug only bites a device that has never joined before. We hadn't shipped one of those in weeks.</p>
+
+        <p>That's the failure mode I keep having to relearn: the code path with zero live users is the one with zero live signal that it's broken. It doesn't page anyone. It doesn't show up in a dashboard. It just sits there until the day someone new tries to onboard, and then it's their very first impression of the product.</p>
+
+        <div class="insight-box">
+          <strong>What actually would have caught this.</strong> Not more logging, not a smarter alert. A test that runs on every push and exercises the literal thing a brand-new install does. We didn't have one. We do now.
+        </div>
+
+        <h2>The decision I had to reverse in public</h2>
+
+        <p>Here's the one I'm least proud of getting right the second time instead of the first. Early on, I wrote down - deliberately, as a design principle - that Re-Forge should use <em>one</em> encryption key for everyone's sealed data, forever. The reasoning wasn't lazy: our own pipeline already decrypts everything under one role to run analysis, so N separate keys would have bought zero additional isolation for real engineering cost. For one customer, that's correct.</p>
+
+        <p>It stops being correct the moment a second company's data sits behind the same key. At that point "one key for everyone" doesn't describe an efficient system anymore - it describes one company's disgruntled ex-employee and another company's confidential codebase sharing a lock. The fix wasn't clever: one KMS key per customer, generated the moment they're provisioned, with our pipeline's decrypt role granted per-key rather than once globally. The interesting part is I had to go back to a document where I'd written "this is the right call, don't revisit it without re-reading why" and revisit it anyway, because the premise under it had changed. The reasoning wasn't wrong. The situation it was reasoning about was gone.</p>
+
+        <h2>A token doesn't say whose company it is</h2>
+
+        <p>This is the part that actually forced a new piece of infrastructure, not just a policy change. With one org, checking a token means checking it against one list. With many orgs, a request arrives carrying nothing but the token itself - nothing says which company's list to even look in. Scanning every customer's records on every request is both slow and the wrong tool for a problem that's really just a fast lookup.</p>
+
+        <figure>
+          <svg viewBox="0 0 620 210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A request carrying only a token hits a global lookup table keyed by the hash of every token in the system, mapping to that token's org and person. Only after that lookup succeeds does the request know which company's data and encryption key to use for everything downstream.">
+            <defs>
+              <marker id="bp-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M0,0 L10,5 L0,10 z" fill="rgba(15,23,42,0.55)"/>
+              </marker>
+            </defs>
+
+            <rect x="16" y="76" width="140" height="56" rx="6" fill="none" stroke="rgba(15,23,42,0.7)" stroke-width="2"/>
+            <text x="86" y="100" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="700" font-size="12.5" fill="rgba(15,23,42,0.85)">Request</text>
+            <text x="86" y="116" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="9.5" fill="rgba(15,23,42,0.55)">token only</text>
+
+            <line x1="156" y1="104" x2="228" y2="104" stroke="rgba(15,23,42,0.55)" stroke-width="1.6" marker-end="url(#bp-arrow)"/>
+
+            <rect x="234" y="56" width="220" height="96" rx="6" fill="rgba(79,70,229,0.06)" stroke="#4f46e5" stroke-width="2"/>
+            <text x="344" y="78" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="9.5" letter-spacing="0.6" fill="#4f46e5">NEW · GLOBAL LOOKUP</text>
+            <text x="344" y="100" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="700" font-size="12.5" fill="rgba(15,23,42,0.85)">hash(token) &rarr; org, person</text>
+            <text x="344" y="118" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="9.5" fill="rgba(15,23,42,0.6)">one table, one fast read</text>
+            <text x="344" y="134" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="9.5" fill="rgba(15,23,42,0.6)">every customer's tokens</text>
+
+            <line x1="454" y1="104" x2="526" y2="104" stroke="rgba(15,23,42,0.55)" stroke-width="1.6" marker-end="url(#bp-arrow)"/>
+            <text x="490" y="92" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="9.5" fill="rgba(15,23,42,0.55)">now we know</text>
+
+            <rect x="532" y="76" width="72" height="56" rx="6" fill="none" stroke="#22c1a1" stroke-width="2"/>
+            <text x="568" y="100" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="700" font-size="11.5" fill="rgba(15,23,42,0.85)">this org's</text>
+            <text x="568" y="116" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="10" fill="rgba(15,23,42,0.6)">data + key</text>
+          </svg>
+          <figcaption>Everything downstream of this lookup is unchanged from the single-tenant design - the org's own data, its own encryption key. The only genuinely new piece is this one small index that answers "whose token is this" before anything else can run.</figcaption>
+        </figure>
+
+        <p>That's the one new database this whole redesign actually needed - not a rewrite of where session data lives, just a fast index sitting in front of it. Everything about how a session gets captured, sealed, and stored stayed exactly as it was. The lookup table is small, cheap, and billed per request rather than for capacity sitting idle - which mattered more to me than it probably should have, because "don't leave a meter running on something nobody's using" turns out to be most of what production-grade actually means at this scale.</p>
+
+        <h2>The moment that justifies all of it</h2>
+
+        <p>Everything above is infrastructure. Here's the actual product moment it exists for: someone leaves the team, or their laptop gets compromised, and you need their access gone <em>now</em>, without touching anyone else's. Under the old shared-token design, that meant rotating one secret and breaking every other device that had it - or not rotating it, and living with the risk. Under the new design, it's one action against one record, and the very next request from that person - from any device, on any route - is refused, while every other person on the team never notices anything happened.</p>
+
+        <div class="insight-box">
+          <strong>How I actually proved this, not just designed it.</strong> I wrote a test that creates two fake companies, gives each one an admin, and asserts - by calling the real code path, not by reading the code and nodding - that company A's admin gets nothing back when it tries to touch company B's people, even by guessing an exact internal ID. Then I proved the revocation case the same way: register a device, capture a real event, revoke the person, and check that the identical next request is refused. Design review tells you a system should be safe. Only a test that tries to break it and fails tells you it is.
+        </div>
+
+        <h2>What's proven, and what I'm not claiming yet</h2>
+
+        <p>In the interest of the same honesty I try to hold my research writing to: the identity layer above is real, deployed, and I watched it work end to end - creation, sign-in, capture, revocation, all against the live system, not a staging copy. What it does <em>not</em> yet include is a full migration of every existing route onto the new per-person model (today it's a deliberate dual-auth transition, so nothing already working breaks while it rolls out), continuous integration running that isolation test on every single push rather than the one time I ran it by hand, or per-customer rate limits to stop one company's misbehaving client from affecting another's. Those are named, tracked, and next - not quietly skipped.</p>
+
+        <p>The line I keep landing on, across this and the research side of what I do: the version of "it works" that counts is the one you watched fail in the way you predicted, not the one you're pretty sure about because the design looked right on paper.</p>
+
+      </div>
+    </article>
+  </main>
+  <footer class="site-footer">&copy; 2026 Shine Gupta</footer>
+</body>
+</html>
