@@ -25,6 +25,8 @@ sleep 1
 
 curl -sf http://127.0.0.1:8917/ -o dist/index.html
 curl -sf http://127.0.0.1:8917/hackathons -o dist/hackathons.html
+curl -sf http://127.0.0.1:8917/publications -o dist/publications.html
+curl -sf http://127.0.0.1:8917/projects -o dist/projects.html
 
 kill "$SERVER_PID" 2>/dev/null || true
 rm -f public/_netlify_router.php

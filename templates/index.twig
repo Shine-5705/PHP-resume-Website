@@ -74,7 +74,8 @@
     <nav class="floating-nav" aria-label="Primary">
         <div class="floating-nav__container">
             <a href="/" class="floating-nav__link floating-nav__link--active" aria-current="page">Home</a>
-            <a href="/#side-projects" class="floating-nav__link">Projects</a>
+            <a href="/projects" class="floating-nav__link">Projects</a>
+            <a href="/publications" class="floating-nav__link">Publications</a>
             <a href="/blog/" class="floating-nav__link">Blog</a>
             <a href="/hackathons" class="floating-nav__link">Hackathons</a>
         </div>
@@ -148,19 +149,6 @@
         </section>
 
         <section class="section-block">
-            <h2 id="publications">Publications</h2>
-            {% for pub in publications %}
-            <article class="card">
-                <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;">
-                    <h3>{% if pub.url %}<a href="{{ pub.url }}" target="_blank" rel="noopener noreferrer">{{ pub.title }}</a>{% else %}{{ pub.title }}{% endif %}</h3>
-                    <div class="card-meta">{{ pub.status }} · {{ pub.period }}</div>
-                </div>
-                <div class="card-role">{{ pub.authors }} - {{ pub.venue }}</div>
-            </article>
-            {% endfor %}
-        </section>
-
-        <section class="section-block">
             <h2 id="skills-section">Skills</h2>
             <div class="skills-categories">
                 {% for category, skills in skillCategories %}
@@ -174,22 +162,6 @@
                 </div>
                 {% endfor %}
             </div>
-        </section>
-
-        <section class="section-block">
-            <h2 id="side-projects">Projects</h2>
-            {% for project in sideProjects %}
-            <article class="card">
-                <h3><a href="{{ project.url }}" target="_blank" rel="noopener noreferrer">{{ project.name }}</a></h3>
-                <div class="card-meta">{{ project.url|replace({'https://': '', 'http://': ''}) }}</div>
-                <p>{{ project.description }}</p>
-                <ul class="tag-list">
-                    {% for tech in project.technologies %}
-                    <li><span class="tag-pill">{{ tech }}</span></li>
-                    {% endfor %}
-                </ul>
-            </article>
-            {% endfor %}
         </section>
 
         <section class="news-section" aria-labelledby="news-heading">

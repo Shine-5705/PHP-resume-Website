@@ -40,45 +40,26 @@
         <div class="floating-nav__container">
             <a href="/" class="floating-nav__link">Home</a>
             <a href="/projects" class="floating-nav__link">Projects</a>
-            <a href="/publications" class="floating-nav__link">Publications</a>
+            <a href="/publications" class="floating-nav__link floating-nav__link--active" aria-current="page">Publications</a>
             <a href="/blog/" class="floating-nav__link">Blog</a>
-            <a href="/hackathons" class="floating-nav__link floating-nav__link--active" aria-current="page">Hackathons</a>
+            <a href="/hackathons" class="floating-nav__link">Hackathons</a>
         </div>
     </nav>
 
     <main class="page-container">
 
         <div class="blog-header">
-            <h1>Hackathons</h1>
-            <p>9+ hackathon wins - a glimpse of recent highlights.</p>
+            <h1>Publications</h1>
+            <p>Peer-reviewed and workshop papers.</p>
         </div>
 
-        {% for hackathon in hackathons %}
+        {% for pub in publications %}
         <article class="card">
-            {% if hackathon.image %}
-            <img class="hackathon-image" src="/{{ hackathon.image }}" alt="Photo from {{ hackathon.title }}">
-            {% endif %}
             <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;">
-                <h3>{{ hackathon.title }} <span class="tag-pill">{{ hackathon.result }}</span></h3>
-                <div class="card-meta">{{ hackathon.period }} · {{ hackathon.location }}</div>
+                <h3>{% if pub.url %}<a href="{{ pub.url }}" target="_blank" rel="noopener noreferrer">{{ pub.title }}</a>{% else %}{{ pub.title }}{% endif %}</h3>
+                <div class="card-meta">{{ pub.status }} · {{ pub.period }}</div>
             </div>
-            <div class="card-role">Project: {{ hackathon.project }}</div>
-            <p>{{ hackathon.description }}</p>
-            {% if hackathon.highlights %}
-            <ul class="details">
-                {% for highlight in hackathon.highlights %}
-                <li>{{ highlight }}</li>
-                {% endfor %}
-            </ul>
-            {% endif %}
-            <ul class="tag-list">
-                {% for tag in hackathon.tags %}
-                <li><span class="tag-pill">{{ tag }}</span></li>
-                {% endfor %}
-            </ul>
-            {% if hackathon.linkedin %}
-            <p style="margin-top:10px;"><a href="{{ hackathon.linkedin }}" target="_blank" rel="noopener noreferrer">View LinkedIn post &rarr;</a></p>
-            {% endif %}
+            <div class="card-role">{{ pub.authors }} - {{ pub.venue }}</div>
         </article>
         {% endfor %}
 
