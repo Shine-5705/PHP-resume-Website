@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ seo.title }}</title>
+
+    <meta name="description" content="{{ seo.description }}">
+    <meta name="keywords" content="{{ seo.keywords }}">
+    <meta name="author" content="{{ seo.author }}">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="{{ seo.url }}">
+
+    <meta property="og:title" content="{{ seo.title }}">
+    <meta property="og:description" content="{{ seo.description }}">
+    <meta property="og:image" content="{{ seo.image }}">
+    <meta property="og:url" content="{{ seo.url }}">
+    <meta property="og:type" content="{{ seo.type }}">
+    <meta property="og:locale" content="{{ seo.locale }}">
+    <meta property="og:site_name" content="{{ seo.site_name }}">
+
+    <meta name="theme-color" content="#ededed">
+    <meta name="application-name" content="{{ seo.site_name }}">
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+    <link rel="preload" href="/css/theme.css" as="style">
+    <link rel="stylesheet" href="/css/theme.css">
+</head>
+<body>
+    <div class="background-shapes" aria-hidden="true">
+        <div class="blur-orb"></div>
+        <div class="blur-orb"></div>
+        <div class="blur-orb"></div>
+    </div>
+
+    <nav class="floating-nav" aria-label="Primary">
+        <div class="floating-nav__container">
+            <a href="/" class="floating-nav__link">Home</a>
+            <a href="/#side-projects" class="floating-nav__link">Projects</a>
+            <a href="/blog/" class="floating-nav__link">Blog</a>
+            <a href="/hackathons" class="floating-nav__link floating-nav__link--active" aria-current="page">Hackathons</a>
+        </div>
+    </nav>
+
+    <main class="page-container">
+
+        <div class="blog-header">
+            <h1>Hackathons</h1>
+            <p>9+ hackathon wins - a glimpse of recent highlights.</p>
+        </div>
+
+        {% for hackathon in hackathons %}
+        <article class="card">
+            {% if hackathon.image %}
+            <img class="hackathon-image" src="/{{ hackathon.image }}" alt="Photo from {{ hackathon.title }}">
+            {% endif %}
+            <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;">
+                <h3>{{ hackathon.title }} <span class="tag-pill">{{ hackathon.result }}</span></h3>
+                <div class="card-meta">{{ hackathon.period }} · {{ hackathon.location }}</div>
+            </div>
+            <div class="card-role">Project: {{ hackathon.project }}</div>
+            <p>{{ hackathon.description }}</p>
+            {% if hackathon.highlights %}
+            <ul class="details">
+                {% for highlight in hackathon.highlights %}
+                <li>{{ highlight }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <ul class="tag-list">
+                {% for tag in hackathon.tags %}
+                <li><span class="tag-pill">{{ tag }}</span></li>
+                {% endfor %}
+            </ul>
+            {% if hackathon.linkedin %}
+            <p style="margin-top:10px;"><a href="{{ hackathon.linkedin }}" target="_blank" rel="noopener noreferrer">View LinkedIn post &rarr;</a></p>
+            {% endif %}
+        </article>
+        {% endfor %}
+
+    </main>
+
+    <div class="site-footer">Last updated on {{ "now"|date("d F Y") }}.</div>
+</body>
+</html>

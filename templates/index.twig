@@ -76,6 +76,7 @@
             <a href="/" class="floating-nav__link floating-nav__link--active" aria-current="page">Home</a>
             <a href="/#side-projects" class="floating-nav__link">Projects</a>
             <a href="/blog/" class="floating-nav__link">Blog</a>
+            <a href="/hackathons" class="floating-nav__link">Hackathons</a>
         </div>
     </nav>
 
@@ -157,39 +158,6 @@
                     <div class="card-meta">{{ pub.status }} · {{ pub.period }}</div>
                 </div>
                 <div class="card-role">{{ pub.authors }} - {{ pub.venue }}</div>
-            </article>
-            {% endfor %}
-        </section>
-
-        <section class="section-block">
-            <h2 id="hackathons">Hackathons</h2>
-            <p class="section-intro">9+ hackathon wins - a glimpse of recent highlights.</p>
-            {% for hackathon in hackathons %}
-            <article class="card">
-                {% if hackathon.image %}
-                <img class="hackathon-image" src="{{ hackathon.image }}" alt="Photo from {{ hackathon.title }}">
-                {% endif %}
-                <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;">
-                    <h3>{{ hackathon.title }} <span class="tag-pill">{{ hackathon.result }}</span></h3>
-                    <div class="card-meta">{{ hackathon.period }} · {{ hackathon.location }}</div>
-                </div>
-                <div class="card-role">Project: {{ hackathon.project }}</div>
-                <p>{{ hackathon.description }}</p>
-                {% if hackathon.highlights %}
-                <ul class="details">
-                    {% for highlight in hackathon.highlights %}
-                    <li>{{ highlight }}</li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
-                <ul class="tag-list">
-                    {% for tag in hackathon.tags %}
-                    <li><span class="tag-pill">{{ tag }}</span></li>
-                    {% endfor %}
-                </ul>
-                {% if hackathon.linkedin %}
-                <p style="margin-top:10px;"><a href="{{ hackathon.linkedin }}" target="_blank" rel="noopener noreferrer">View LinkedIn post →</a></p>
-                {% endif %}
             </article>
             {% endfor %}
         </section>
