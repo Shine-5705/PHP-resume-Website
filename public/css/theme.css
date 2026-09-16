@@ -670,6 +670,73 @@ a {
   margin-bottom: 6px;
 }
 
+/* stronger opening line for a case-study-style post */
+.post-body .lede {
+  font-size: 1.14rem;
+  font-weight: 500;
+  color: rgba(15, 23, 42, 0.88);
+  line-height: 1.7;
+}
+
+/* at-a-glance metrics row */
+.stat-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 8px 0 32px;
+}
+
+.stat-chip {
+  flex: 1 1 130px;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+  padding: 14px 16px;
+}
+
+.stat-chip .stat-value {
+  display: block;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 1.35rem;
+  line-height: 1.2;
+  color: #4f46e5;
+}
+
+.stat-chip .stat-label {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: rgba(15, 23, 42, 0.5);
+}
+
+/* frames a figure so a diagram reads as designed, not dropped in */
+.diagram-card {
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  padding: 22px 24px 18px;
+  margin: 28px 0;
+}
+
+.diagram-card svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.diagram-card figcaption {
+  margin-top: 14px;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: rgba(15, 23, 42, 0.55);
+}
+
 .paper-ref a {
   font-weight: 600;
   font-size: 0.82rem;
