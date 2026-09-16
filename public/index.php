@@ -419,9 +419,9 @@ and LLM systems for global clients. Specialized in RAG, RLHF, SFT, LLM evaluatio
         'seo' => $seo,
         'profile' => [
             'name' => 'Shine Gupta',
-            'description' => 'AI Engineer & Full-Stack Developer building production LLM systems and customer-facing applications.',
+            'description' => 'Founder, Re-Forge · Full-Stack Developer, Gnani.ai · AI Engineer & Researcher.',
             'location' => 'Bengaluru, India',
-            'about' => 'AI Engineer and Full-Stack Developer specializing in production multi-agent LLM architectures, RAG pipelines, and full-stack web applications. I\'ve shipped 3 production apps in 2 months at Gnani.ai, built agent evaluation systems at Valura.ai, and founded Chatverse.io—an AI automation platform with 500+ beta users. Winner of 9+ hackathons including UCWS Singapore. Accepted papers at ICML 2026 SCALE Workshop.'
+            'about' => 'I\'m building Re-Forge, an evolution layer for AI coding agents that turns real engineering trajectories into agent improvements, and working full-stack in Gnani.ai\'s Founder\'s Office, where I\'ve shipped 3 production LLM and voice-agent applications in 2 months. My research looks at where self-improving agents actually break — tool hallucination, agents grading their own logs, and what a system learns versus what it\'s told. Two papers are accepted at the ICML 2026 SCALE Workshop, and two more are under review for the NeurIPS 2026 GlobalSouthAI Workshop. Before this, I founded Chatverse.io (500+ beta users, 3,500+ automations), built agent evaluation systems at Valura.ai, and won 9+ hackathons including UCWS Singapore.'
         ],
         'workExperience' => $workExperience,
         'skillCategories' => $skillCategories,
