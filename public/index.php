@@ -175,7 +175,7 @@ and LLM systems for global clients. Specialized in RAG, RLHF, SFT, LLM evaluatio
         [
             'title' => 'Compute-Aware Mixture-of-Agents: Verifier-Gated Adaptive Aggregation under a Fixed Token Budget',
             'authors' => 'Shine Gupta, S Akash',
-            'venue' => 'SCALE Workshop, ICML 2026 (Poster)',
+            'venue' => 'ICML 2026',
             'period' => 'May 2026',
             'status' => 'Accepted',
             'url' => 'https://openreview.net/forum?id=reVvPpjoje',
@@ -184,7 +184,7 @@ and LLM systems for global clients. Specialized in RAG, RLHF, SFT, LLM evaluatio
         [
             'title' => 'Who Hallucinates Tools, How Often, and What Fixes It?',
             'authors' => 'S Akash, Shine Gupta',
-            'venue' => 'SCALE Workshop, ICML 2026 (Poster)',
+            'venue' => 'ICML 2026',
             'period' => 'May 2026',
             'status' => 'Accepted',
             'url' => 'https://openreview.net/forum?id=njwFtNF0OW',

@@ -149,7 +149,6 @@
 
         <section class="section-block">
             <h2 id="publications">Publications</h2>
-            <p class="section-intro">Peer-reviewed and workshop papers — linked to OpenReview and to a plain-language write-up on the blog where one exists.</p>
             {% for pub in publications %}
             <article class="card">
                 <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;">
@@ -157,9 +156,6 @@
                     <div class="card-meta">{{ pub.status }} · {{ pub.period }}</div>
                 </div>
                 <div class="card-role">{{ pub.authors }} — {{ pub.venue }}</div>
-                {% if pub.blogUrl %}
-                <p><a href="{{ pub.blogUrl }}">Read the write-up on the blog →</a></p>
-                {% endif %}
             </article>
             {% endfor %}
         </section>
