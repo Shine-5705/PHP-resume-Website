@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://shine-resume.onrender.com/sitemap.xml
+Sitemap: https://shine-5705.github.io/sitemap.xml
