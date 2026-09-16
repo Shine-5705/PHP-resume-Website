@@ -93,10 +93,7 @@ return [
             'period' => '2023',
             'location' => 'KIET Group of Institutions',
             'project' => 'Team project',
-            'description' => 'Secured first position on Innovation Day with the same core team.',
-            'highlights' => [
-                'Built with teammates Sahil Panwar, Dhruv Sharma, and Ankit Singh.'
-            ],
+            'description' => 'Secured first position on Innovation Day at KIET.',
             'tags' => ['Innovation Day', 'KIET']
         ]
     ];
