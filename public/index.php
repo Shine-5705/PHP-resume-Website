@@ -50,10 +50,13 @@ and LLM systems for global clients. Specialized in RAG, RLHF, SFT, LLM evaluatio
             'location' => 'Bengaluru, India',
             'description' => 'Sole builder in the Founder\'s Office shipping production full-stack applications for enterprise voice-agent and customer portal products.',
             'details' => [
-                'Designed, built, and deployed 3 production full-stack web applications in 2 months - customer-facing portals and voice-agent products - owning frontend (React/Next.js), backend APIs, auth, and cloud deployment.',
-                'Delivered directly to US and Japanese enterprise clients, iterating on their feedback to ship quickly and reliably.'
+                'Shipped the production frontend for Inya.ai (Gnani\'s voice-agent platform) in React/TypeScript across a US-market site and a Japan-market build, each with its own dev, QA, and production pipeline.',
+                'Built a real-time call-translation product spanning web, Android, and Electron desktop clients, streaming audio over WebRTC/WebSocket through live speech-to-text, translation, and text-to-speech across English, Spanish, and Japanese.',
+                'Built a government-scheme enrollment platform covering 5 schemes (PMKVY, PM-KISAN, Ayushman Bharat, PMAY, MGNREGA) with OCR document intake, WhatsApp/SMS/voice campaign workflows, and a KPI dashboard.',
+                'Built an Inya voice-agent abandoned-cart recovery flow for e-commerce checkouts, with the storefront webhook and admin API integration implemented and tested end-to-end.',
+                'Built a citation-grounded research agent over official Lok Sabha parliamentary publications that answers questions with exact document and page citations.'
             ],
-            'tags' => ['React', 'Next.js', 'FastAPI', 'AWS', 'TypeScript', 'OAuth']
+            'tags' => ['React', 'Next.js', 'FastAPI', 'AWS', 'TypeScript', 'OAuth', 'WebRTC', 'RAG']
         ],
         [
             'company' => 'Chatverse.io',
