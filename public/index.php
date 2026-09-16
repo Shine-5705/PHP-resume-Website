@@ -22,8 +22,8 @@ $app->get('/', function ($request, $response, $args) {
 and LLM systems for global clients. Specialized in RAG, RLHF, SFT, LLM evaluation, and MLOps on AWS and GCP. multi-agent architectures, and customer-facing web applications.',
         'keywords' => 'AI Engineer, Full-Stack Developer, LLMs, RAG, AI Agents, LangGraph, MCP, React, Next.js, FastAPI, Python, TypeScript, MLOps, AWS, GCP, Docker, Kubernetes',
         'author' => 'Shine Gupta',
-        'url' => 'https://shine-resume-dmaq.onrender.com/',
-        'image' => 'https://' . $_SERVER['HTTP_HOST'] . '/assets/images/profile.webp',
+        'url' => 'https://shine-5705.github.io/',
+        'image' => 'https://shine-5705.github.io/assets/images/profile.webp',
         'type' => 'profile',
         'locale' => 'en_US',
         'site_name' => 'Shine Gupta\'s Resume'
@@ -40,7 +40,7 @@ and LLM systems for global clients. Specialized in RAG, RLHF, SFT, LLM evaluatio
                 'Re-Forge mines agent interactions, tool calls, failures, and successful resolutions to discover reusable behaviors and evaluate interventions.',
                 'Continuously improves how agents perform organization-specific engineering tasks through eval-driven learning from production trajectories.'
             ],
-            'tags' => ['Self Evolving Agents' 'Evals', 'Claude Code', 'Cursor', 'Codex', 'MCP']
+            'tags' => ['Self Evolving Agents', 'Evals', 'Claude Code', 'Cursor', 'Codex', 'MCP']
         ],
         [
             'company' => 'Gnani.ai',
