@@ -80,12 +80,12 @@ return [
             'result' => '1st Runner-Up',
             'period' => '2023',
             'location' => 'KIET Group of Institutions',
-            'project' => 'Team ENUMS',
-            'description' => 'Our team ENUMS emerged as 1st Runner-Up at INNOTECH KIET, securing a prize of Rs. 8,000.',
+            'project' => 'CyberRakshak',
+            'description' => 'Won 1st Runner-Up at INNOTECH KIET with CyberRakshak, securing a prize of Rs. 8,000.',
             'highlights' => [
-                'Built with teammates Dhruv Sharma, Sahil Panwar, and Ankit Singh, with guidance from the CSIT department faculty at KIET.'
+                'CyberRakshak: an AI-based cybercrime prediction system with real-time risk scoring, built with guidance from the CSIT department faculty at KIET.'
             ],
-            'tags' => ['Innotech', 'KIET', 'Team ENUMS']
+            'tags' => ['Innotech', 'KIET', 'CyberRakshak']
         ],
         [
             'title' => 'Innovation Day',
@@ -98,17 +98,5 @@ return [
                 'Built with teammates Sahil Panwar, Dhruv Sharma, and Ankit Singh.'
             ],
             'tags' => ['Innovation Day', 'KIET']
-        ],
-        [
-            'title' => 'Hack the Mountains Hackathon',
-            'result' => 'Participant',
-            'period' => '2023',
-            'location' => 'India',
-            'project' => 'Team project',
-            'description' => 'Completed the "Hack the Mountains" Hackathon, collaborating on a project end to end with the team.',
-            'highlights' => [
-                'Built with teammates Ankit Singh, Sahil Panwar, and Dhruv Sharma.'
-            ],
-            'tags' => ['Hackathon', 'Teamwork']
         ]
     ];
