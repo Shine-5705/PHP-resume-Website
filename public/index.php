@@ -40,7 +40,7 @@ and LLM systems for global clients. Specialized in RAG, RLHF, SFT, LLM evaluatio
                 'Re-Forge mines agent interactions, tool calls, failures, and successful resolutions to discover reusable behaviors and evaluate interventions.',
                 'Continuously improves how agents perform organization-specific engineering tasks through eval-driven learning from production trajectories.'
             ],
-            'tags' => ['Self Evolving Agents' 'Evals', 'Claude Code', 'Cursor', 'Codex', 'MCP']
+            'tags' => ['Self Evolving Agents', 'Evals', 'Claude Code', 'Cursor', 'Codex', 'MCP']
         ],
         [
             'company' => 'Gnani.ai',
