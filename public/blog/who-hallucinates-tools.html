@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Who Hallucinates Tools, How Often, and What Fixes It? - Blog by Shine Gupta</title>
+  <meta name="description" content="Commercial frontier LLMs never hallucinate tool names on BFCL, open-weight models do — and a one-line, training-free re-prompt removes it.">
+  <link rel="stylesheet" href="/css/theme.css">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+<body>
+  <div class="background-shapes" aria-hidden="true">
+    <div class="blur-orb"></div>
+    <div class="blur-orb"></div>
+    <div class="blur-orb"></div>
+  </div>
+  <nav class="floating-nav" aria-label="Primary">
+    <div class="floating-nav__container">
+      <a href="/" class="floating-nav__link">Home</a>
+      <a href="/#side-projects" class="floating-nav__link">Projects</a>
+      <a href="/blog/" class="floating-nav__link floating-nav__link--active" aria-current="page">Blog</a>
+    </div>
+  </nav>
+  <main class="page-container">
+    <a href="/blog/" class="back-link">&larr; Back to all posts</a>
+    <article class="post-shell">
+      <h1 class="post-title">Who Hallucinates Tools, How Often, and What Fixes It?</h1>
+      <div class="post-meta">May 2026 <span class="reading-time">7 min read</span></div>
+      <div class="post-categories"><span>Research</span> <span>LLM Agents</span> <span>Tool Use</span></div>
+      <div style="display:flex; flex-wrap:wrap; gap:10px; margin-bottom:24px;">
+        <a href="https://openreview.net/forum?id=njwFtNF0OW" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:8px; padding:8px 18px; border-radius:999px; background:#4f46e5; color:white; text-decoration:none; font-size:0.85rem; font-weight:600; font-family:'Montserrat',sans-serif;">Read on OpenReview &rarr;</a>
+      </div>
+      <div class="post-body">
+
+        <p>This one was led by <a href="https://akasxh.github.io/" target="_blank" rel="noopener">S Akash</a>, with me as co-author, also accepted as a poster to the <strong>SCALE Workshop at ICML 2026</strong>. It's about a specific, measurable failure mode in tool-using agents: a model calling a tool that was never in its tool list &mdash; <em>tool-name hallucination</em> &mdash; and what actually makes it stop.</p>
+
+        <h2>The problem</h2>
+
+        <p>Tool-name hallucination is a known failure mode for agents that call functions, but most discussion of it is qualitative. We wanted a number: define a per-call <strong>Tool Fabrication Rate (TFR)</strong> and measure it directly on the Berkeley Function Calling Leaderboard (BFCL) multi-turn benchmark, across enough calls and enough model families that the number means something.</p>
+
+        <div class="insight-box">
+          <strong>The headline result.</strong> Across 6,000+ opaque-baseline calls, every commercial frontier model we tested (five Anthropic 4.x versions, and OpenAI's gpt-4.x/4o/gpt-5 tiers) logged <strong>zero</strong> tool-name fabrications. Open-weight models &mdash; Qwen3, Qwen2.5, Llama &mdash; fabricated tools at up to <strong>10.4%</strong>.
+        </div>
+
+        <h2>Why it matters more than it sounds</h2>
+
+        <p>A fabricated tool name isn't always a harmless dead end. Of the fabricated calls in the open-weight models, <strong>70%</strong> named execution-ready, state-changing actions &mdash; things like a fabricated <code>place_order</code> or <code>cancel_booking</code> call. Under a permissive executor that doesn't strictly validate against a registry before acting, that isn't a failed lookup, it's an unintended action. That's the part that makes the failure rate more than an academic curiosity for anyone deploying agents against real APIs.</p>
+
+        <h2>The fix: Registry-Visible Reprompting</h2>
+
+        <p>The fix we propose, <strong>RVR (Registry-Visible Reprompting)</strong>, is deliberately boring: it's training-free middleware. On a registry miss &mdash; the model calls a tool that doesn't exist &mdash; RVR returns exactly one re-prompt wrapping a structured <code>tool_not_found</code> envelope, and lets the model try again with that signal. Across the pooled Qwen3 evaluation, RVR removed <strong>all twenty</strong> fabrications we'd logged (Fisher's exact test, p = 3.5&times;10<sup>-5</sup> on 20/1,417 vs. 0/945).</p>
+
+        <h2>The ablation that surprised us</h2>
+
+        <p>The more interesting finding is <em>why</em> RVR works. We ran a powered ablation swapping in a deliberately wrong registry list in place of the real one &mdash; and it recovered just as well (Fisher's exact, p = 1.0). In other words, the content of the registry doesn't drive the fix. What drives it is the <em>format</em> of the rejection: telling the model, in a structured way, that its call didn't resolve is enough on its own to make it stop fabricating and try a real tool. That's a cheaper and more portable fix than it first looks, since it means you don't need a perfectly maintained tool registry for the mitigation to work &mdash; you need the rejection message shaped right.</p>
+
+        <div class="insight-box">
+          <strong>The honest takeaway.</strong> Frontier commercial models don't currently need this fix on BFCL. Open-weight models deploying agentic tool-use in production do, and the fix is cheap: no fine-tuning, no retraining, just a well-formatted re-prompt on a registry miss.
+        </div>
+
+        <p>We release the evaluation harness, the traces, and the per-call labels alongside the paper, so the TFR numbers here can be checked and extended by anyone running BFCL.</p>
+
+        <h2>Read the paper</h2>
+        <p><a href="https://openreview.net/forum?id=njwFtNF0OW" target="_blank" rel="noopener">Open the OpenReview forum page &rarr;</a></p>
+
+        <div class="paper-ref">
+          <div class="paper-title">Who Hallucinates Tools, How Often, and What Fixes It?</div>
+          <div class="paper-authors">S Akash, Shine Gupta. SCALE Workshop, ICML 2026 (Poster)</div>
+          <a href="https://openreview.net/forum?id=njwFtNF0OW" target="_blank" rel="noopener">OpenReview</a>
+        </div>
+
+      </div>
+    </article>
+  </main>
+  <footer class="site-footer">&copy; 2026 Shine Gupta</footer>
+</body>
+</html>

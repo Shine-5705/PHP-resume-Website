@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog - Shine Gupta</title>
+  <meta name="description" content="Write-ups on the research behind Shine Gupta's papers and projects.">
+  <link rel="stylesheet" href="/css/theme.css">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+<body>
+  <div class="background-shapes" aria-hidden="true">
+    <div class="blur-orb"></div>
+    <div class="blur-orb"></div>
+    <div class="blur-orb"></div>
+  </div>
+  <nav class="floating-nav" aria-label="Primary">
+    <div class="floating-nav__container">
+      <a href="/" class="floating-nav__link">Home</a>
+      <a href="/#side-projects" class="floating-nav__link">Projects</a>
+      <a href="/blog/" class="floating-nav__link floating-nav__link--active" aria-current="page">Blog</a>
+    </div>
+  </nav>
+  <main class="page-container">
+    <div class="blog-header">
+      <h1>Blog</h1>
+      <p>Plain-language write-ups of the papers, one at a time.</p>
+    </div>
+
+    <article class="article-card">
+      <h2><a href="/blog/who-hallucinates-tools.html">Who Hallucinates Tools, How Often, and What Fixes It?</a></h2>
+      <div class="meta">May 2026</div>
+      <div class="categories"><span>Research</span><span>LLM Agents</span><span>Tool Use</span></div>
+      <p>Commercial frontier models (Anthropic, OpenAI) log zero tool-name fabrications on BFCL multi-turn across 6,000+ calls; open-weight models fabricate at up to 10.4%, and 70% of those are execution-ready state-changing calls. A training-free re-prompt, RVR, removes them &mdash; and an ablation shows the fix is driven by the rejection's format, not the registry's content. Joint work with <a href="https://akasxh.github.io/" target="_blank" rel="noopener">S Akash</a> (lead author).</p>
+      <a class="read-more" href="/blog/who-hallucinates-tools.html">Read more</a>
+    </article>
+
+    <article class="article-card">
+      <h2><a href="/blog/compute-aware-mixture-of-agents.html">Compute-Aware Mixture-of-Agents: Teaching a Multi-Agent Pipeline When to Stop</a></h2>
+      <div class="meta">May 2026</div>
+      <div class="categories"><span>Research</span><span>LLM Agents</span><span>Test-Time Compute</span></div>
+      <p>A lightweight self-consistency verifier decides, per query, when a Mixture-of-Agents pipeline should stop aggregating. It helps when the agent pool is well-matched to the task (85.0% accuracy, +5 points over fixed-depth MoA-1) and does not rescue a saturated or mismatched pool &mdash; an honest look at when adaptive test-time compute pays off. Joint work with <a href="https://akasxh.github.io/" target="_blank" rel="noopener">S Akash</a>.</p>
+      <a class="read-more" href="/blog/compute-aware-mixture-of-agents.html">Read more</a>
+    </article>
+
+  </main>
+  <footer class="site-footer">&copy; 2026 Shine Gupta</footer>
+</body>
+</html>

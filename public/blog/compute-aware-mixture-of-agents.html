@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compute-Aware Mixture-of-Agents - Blog by Shine Gupta</title>
+  <meta name="description" content="A lightweight verifier that decides, per query, when a Mixture-of-Agents pipeline should stop aggregating — and an honest look at when that helps and when it doesn't.">
+  <link rel="stylesheet" href="/css/theme.css">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+<body>
+  <div class="background-shapes" aria-hidden="true">
+    <div class="blur-orb"></div>
+    <div class="blur-orb"></div>
+    <div class="blur-orb"></div>
+  </div>
+  <nav class="floating-nav" aria-label="Primary">
+    <div class="floating-nav__container">
+      <a href="/" class="floating-nav__link">Home</a>
+      <a href="/#side-projects" class="floating-nav__link">Projects</a>
+      <a href="/blog/" class="floating-nav__link floating-nav__link--active" aria-current="page">Blog</a>
+    </div>
+  </nav>
+  <main class="page-container">
+    <a href="/blog/" class="back-link">&larr; Back to all posts</a>
+    <article class="post-shell">
+      <h1 class="post-title">Compute-Aware Mixture-of-Agents: Teaching a Multi-Agent Pipeline When to Stop</h1>
+      <div class="post-meta">May 2026 <span class="reading-time">6 min read</span></div>
+      <div class="post-categories"><span>Research</span> <span>LLM Agents</span> <span>Test-Time Compute</span></div>
+      <div style="display:flex; flex-wrap:wrap; gap:10px; margin-bottom:24px;">
+        <a href="https://openreview.net/forum?id=reVvPpjoje" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:8px; padding:8px 18px; border-radius:999px; background:#4f46e5; color:white; text-decoration:none; font-size:0.85rem; font-weight:600; font-family:'Montserrat',sans-serif;">Read on OpenReview &rarr;</a>
+      </div>
+      <div class="post-body">
+
+        <p>This is joint work with <a href="https://akasxh.github.io/" target="_blank" rel="noopener">S Akash</a>, accepted as a poster to the <strong>SCALE Workshop at ICML 2026</strong>. It asks a narrow, practical question about Mixture-of-Agents (MoA): if you let the pipeline decide for itself when it has aggregated enough, does it actually save compute without losing accuracy &mdash; and does that decision hold up outside the one setting where it was tuned?</p>
+
+        <h2>The problem</h2>
+
+        <p>Mixture-of-Agents aggregates responses from several LLMs across a fixed number of layers, and it spends exactly the same compute on every query regardless of how easy or hard that query is. A simple arithmetic question and a genuinely ambiguous one get the same number of aggregation rounds. That is wasteful in one direction (easy queries burn tokens they didn't need) and potentially insufficient in the other (hard queries might have benefited from one more round).</p>
+
+        <div class="insight-box">
+          <strong>The idea in one line.</strong> Add a lightweight self-consistency verifier that looks at the agents' answers after each layer and decides, per query, whether to stop aggregating or keep going &mdash; instead of running a fixed number of layers for every query.
+        </div>
+
+        <h2>Compute-Aware MoA</h2>
+
+        <p>We call the result CA-MoA. After each aggregation layer, the verifier checks how much the pooled agents agree with each other. High agreement is treated as a signal that further aggregation is unlikely to change the answer, so the pipeline terminates early; low agreement keeps it going, up to the token budget. The mechanism is deliberately simple &mdash; it's a signal already implicit in the agent pool's outputs, not an additional trained model.</p>
+
+        <h2>What we found</h2>
+
+        <p>We tested this on GSM8K across three agent-pool configurations, and the result is genuinely mixed, which is the part I think is worth being upfront about:</p>
+
+        <ul>
+          <li><strong>Heterogeneous pool (Llama-3.2-3B + Qwen2.5-3B):</strong> CA-MoA reached <strong>85.0%</strong> accuracy &mdash; tied with 4-sample self-consistency and 5 points above fixed-depth MoA-1, at 1.4&times; MoA-1's token spend. This is the setting where adaptive stopping earns its keep.</li>
+          <li><strong>Homogeneous pool (Llama-3.2-3B &times; 3):</strong> fixed-depth MoA-1 already saturates the agents at 92% accuracy, so there's no headroom left for the verifier to find.</li>
+          <li><strong>Mixed-capability pool (adding a smaller Gemma2-2B agent):</strong> the weaker agent actively corrupts aggregation, and CA-MoA cannot rescue that on its own.</li>
+        </ul>
+
+        <p>The within-MoA gain over fixed-depth MoA-1 moves from <strong>&minus;8</strong>, to <strong>+13.3</strong>, to <strong>+5</strong> across those three settings, tracking how "aggregation-appropriate" the pool is. What stayed consistent across all three is that the verifier's stop/continue signal is itself informative: queries the gating policy let terminate after one layer were correct <strong>89&ndash;100%</strong> of the time, while queries that exhausted the full budget were correct only <strong>0&ndash;40%</strong> of the time. Even where the accuracy gain disappears, the verifier is still telling you something true about which queries the pool is going to get right.</p>
+
+        <div class="insight-box">
+          <strong>The honest takeaway.</strong> Adaptive depth helps when the agent pool is well-matched to the task and none of the agents already saturate it. It does not fix a pool that's fundamentally mismatched (too easy, or dragged down by a weak agent). The verifier's confidence signal is useful even when the accuracy win isn't there.
+        </div>
+
+        <p>We've pre-registered a follow-up at a larger, similar-capability ~7B scale with n=200 to see whether the heterogeneous-pool result holds up at bigger scale.</p>
+
+        <h2>Read the paper</h2>
+        <p><a href="https://openreview.net/forum?id=reVvPpjoje" target="_blank" rel="noopener">Open the OpenReview forum page &rarr;</a></p>
+
+        <div class="paper-ref">
+          <div class="paper-title">Compute-Aware Mixture-of-Agents: Verifier-Gated Adaptive Aggregation under a Fixed Token Budget</div>
+          <div class="paper-authors">Shine Gupta, S Akash. SCALE Workshop, ICML 2026 (Poster)</div>
+          <a href="https://openreview.net/forum?id=reVvPpjoje" target="_blank" rel="noopener">OpenReview</a>
+        </div>
+
+      </div>
+    </article>
+  </main>
+  <footer class="site-footer">&copy; 2026 Shine Gupta</footer>
+</body>
+</html>

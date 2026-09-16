@@ -174,17 +174,21 @@ and LLM systems for global clients. Specialized in RAG, RLHF, SFT, LLM evaluatio
     $publications = [
         [
             'title' => 'Compute-Aware Mixture-of-Agents: Verifier-Gated Adaptive Aggregation under a Fixed Token Budget',
-            'authors' => 'Gupta, S. et al.',
-            'venue' => 'ICML 2026 SCALE Workshop, Seoul',
-            'period' => 'Jul 2026',
-            'status' => 'Accepted'
+            'authors' => 'Shine Gupta, S Akash',
+            'venue' => 'SCALE Workshop, ICML 2026 (Poster)',
+            'period' => 'May 2026',
+            'status' => 'Accepted',
+            'url' => 'https://openreview.net/forum?id=reVvPpjoje',
+            'blogUrl' => '/blog/compute-aware-mixture-of-agents.html'
         ],
         [
-            'title' => 'Tool-Existence Hallucination Is Tier-Dependent and Intra-Family Non-Monotonic on BFCL Multi-Turn',
-            'authors' => 'Gupta, S. et al.',
-            'venue' => 'ICML 2026 SCALE Workshop, Seoul',
-            'period' => 'Jul 2026',
-            'status' => 'Accepted'
+            'title' => 'Who Hallucinates Tools, How Often, and What Fixes It?',
+            'authors' => 'S Akash, Shine Gupta',
+            'venue' => 'SCALE Workshop, ICML 2026 (Poster)',
+            'period' => 'May 2026',
+            'status' => 'Accepted',
+            'url' => 'https://openreview.net/forum?id=njwFtNF0OW',
+            'blogUrl' => '/blog/who-hallucinates-tools.html'
         ],
         [
             'title' => 'Character-Level Language Modeling',
@@ -192,6 +196,29 @@ and LLM systems for global clients. Specialized in RAG, RLHF, SFT, LLM evaluatio
             'venue' => 'ICASET-2026',
             'period' => '2026',
             'status' => 'Accepted'
+        ]
+    ];
+
+    $news = [
+        [
+            'date' => 'May 2026',
+            'text' => 'Two papers with <strong>S Akash</strong> accepted as posters to the SCALE Workshop @ ICML 2026: <a href="/blog/compute-aware-mixture-of-agents.html">Compute-Aware Mixture-of-Agents</a> and <a href="/blog/who-hallucinates-tools.html">Who Hallucinates Tools, How Often, and What Fixes It?</a>'
+        ],
+        [
+            'date' => 'Apr 2026',
+            'text' => 'Joined <a href="https://www.gnani.ai/" target="_blank" rel="noopener noreferrer">Gnani.ai</a> as sole full-stack builder in the Founder\'s Office, shipping 3 production apps in 2 months.'
+        ],
+        [
+            'date' => '2026',
+            'text' => 'Won the <strong>UCWS Singapore Hackathon</strong> with <em>re-forge</em>, built with co-founder S Akash.'
+        ],
+        [
+            'date' => '2026',
+            'text' => 'Building <a href="#work-experience"><em>Re-Forge</em></a>, an evolution layer for AI coding agents, with S Akash.'
+        ],
+        [
+            'date' => '2026',
+            'text' => '<em>Character-Level Language Modeling</em> accepted at ICASET-2026.'
         ]
     ];
     
@@ -375,7 +402,8 @@ and LLM systems for global clients. Specialized in RAG, RLHF, SFT, LLM evaluatio
         'publications' => $publications,
         'hackathons' => $hackathons,
         'sideProjects' => $sideProjects,
-        'education' => $education
+        'education' => $education,
+        'news' => $news
     ];
     
     return $view->render($response, 'index.twig', $data);
