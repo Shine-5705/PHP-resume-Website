@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adaptation Without Inheritance - Blog by Shine Gupta</title>
+  <meta name="description" content="Giving evolving LLM agents a bounded lifetime whose memory is wiped between generations, so innate and learned performance can be measured apart.">
+  <link rel="stylesheet" href="/css/theme.css">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+<body>
+  <div class="background-shapes" aria-hidden="true">
+    <div class="blur-orb"></div>
+    <div class="blur-orb"></div>
+    <div class="blur-orb"></div>
+  </div>
+  <nav class="floating-nav" aria-label="Primary">
+    <div class="floating-nav__container">
+      <a href="/" class="floating-nav__link">Home</a>
+      <a href="/#side-projects" class="floating-nav__link">Projects</a>
+      <a href="/blog/" class="floating-nav__link floating-nav__link--active" aria-current="page">Blog</a>
+    </div>
+  </nav>
+  <main class="page-container">
+    <a href="/blog/" class="back-link">&larr; Back to all posts</a>
+    <article class="post-shell">
+      <h1 class="post-title">Adaptation Without Inheritance</h1>
+      <div class="post-meta">Aug 2026 <span class="reading-time">8 min read</span></div>
+      <div class="post-categories"><span>Research</span> <span>Self-Improving Agents</span> <span>Evolution</span></div>
+      <div style="display:flex; flex-wrap:wrap; gap:10px; margin-bottom:24px;">
+        <a href="https://openreview.net/pdf?id=g5kYSKAYGu" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:8px; padding:8px 18px; border-radius:999px; background:#4f46e5; color:white; text-decoration:none; font-size:0.85rem; font-weight:600; font-family:'Montserrat',sans-serif;">📄 Read the Research Paper (PDF) &rarr;</a>
+        <a href="https://openreview.net/forum?id=g5kYSKAYGu" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:8px; padding:8px 18px; border-radius:999px; background:rgba(79,70,229,0.08); color:#4f46e5; border:1px solid rgba(79,70,229,0.35); text-decoration:none; font-size:0.85rem; font-weight:600; font-family:'Montserrat',sans-serif;">OpenReview &rarr;</a>
+      </div>
+      <div class="post-body">
+
+        <p>What your body learns in your lifetime does not get written into the genes your children inherit. Biologists call that separation the <strong>Weismann barrier</strong>. I wanted to know what happens if you build the same barrier into a population of self-improving coding agents &mdash; on purpose, by construction, not as an afterthought.</p>
+
+        <h2>The assumption I set out to break</h2>
+
+        <p>The Darwin G&ouml;del Machine lineage replaces the original G&ouml;del machine's proof obligation with empirical validation: a node in the search is scored as an exchangeable set of task outcomes. Written down as an assumption, that's time-homogeneity &mdash; the idea that a node's score today would look the same tomorrow, memory and all. I broke that by construction. Each member of my evolving population gets a bounded lifetime, split down the middle by a Weismann barrier. The <strong>germline</strong> &mdash; the agent's code and a handful of tuning numbers &mdash; crosses into the child. The <strong>soma</strong> &mdash; everything the agent writes down for itself from its own failures during that one lifetime &mdash; is destroyed at the generation boundary.</p>
+
+        <figure>
+          <svg viewBox="0 0 520 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram: a parent agent crosses a Weismann barrier into a child. The germline, code and tuning numbers, passes through. The soma, memory written during one lifetime, is wiped at the barrier.">
+            <circle cx="90" cy="95" r="46" fill="rgba(79,70,229,0.08)" stroke="#4f46e5" stroke-width="2"/>
+            <text x="90" y="90" text-anchor="middle" font-family="Gloock, serif" font-size="15" fill="rgba(15,23,42,0.85)">Parent</text>
+            <text x="90" y="108" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="10" fill="rgba(15,23,42,0.55)">code + soma</text>
+
+            <line x1="260" y1="20" x2="260" y2="170" stroke="rgba(15,23,42,0.3)" stroke-width="2" stroke-dasharray="6 5"/>
+            <text x="260" y="15" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="11" font-weight="700" fill="rgba(15,23,42,0.6)">Weismann barrier</text>
+
+            <path d="M138 82 C 190 60, 220 60, 250 66" fill="none" stroke="#4f46e5" stroke-width="2.5" marker-end="url(#arrow)"/>
+            <text x="195" y="55" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="10" font-weight="700" fill="#4f46e5">germline crosses</text>
+
+            <path d="M138 108 C 175 130, 200 130, 230 122" fill="none" stroke="rgba(15,23,42,0.4)" stroke-width="2.5" stroke-dasharray="3 4"/>
+            <circle cx="245" cy="118" r="9" fill="none" stroke="rgba(190,30,45,0.7)" stroke-width="2.5"/>
+            <line x1="240" y1="113" x2="250" y2="123" stroke="rgba(190,30,45,0.7)" stroke-width="2.5"/>
+            <line x1="250" y1="113" x2="240" y2="123" stroke="rgba(190,30,45,0.7)" stroke-width="2.5"/>
+            <text x="195" y="145" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="10" font-weight="700" fill="rgba(15,23,42,0.5)">soma wiped</text>
+
+            <circle cx="430" cy="95" r="46" fill="rgba(79,70,229,0.08)" stroke="#4f46e5" stroke-width="2"/>
+            <text x="430" y="90" text-anchor="middle" font-family="Gloock, serif" font-size="15" fill="rgba(15,23,42,0.85)">Child</text>
+            <text x="430" y="108" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="10" fill="rgba(15,23,42,0.55)">code, fresh memory</text>
+
+            <defs>
+              <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+                <path d="M0,0 L8,4 L0,8 Z" fill="#4f46e5"/>
+              </marker>
+            </defs>
+          </svg>
+          <figcaption>One generation boundary. Code and tuning numbers (germline) cross the barrier; whatever the agent learned about its own failures within its lifetime (soma) does not.</figcaption>
+        </figure>
+
+        <h2>Separating innate from learned</h2>
+
+        <p>Inside one lifetime, a failure can climb a small ladder: from a <em>note</em>, to a <em>rule</em> once it recurs and the fix is shown to replay, to a <em>hook</em>, a small program. Re-evaluating the best agents twice &mdash; once with memory wiped, once intact &mdash; separates what they innately are from what they merely learned during the run. I also built in a preregistered liveness gate that refuses to read a null result through machinery it cannot first show was actually running. That gate matters more than it sounds: it's the difference between "the effect isn't there" and "my harness silently stopped measuring."</p>
+
+        <div class="insight-box">
+          <strong>The honest result.</strong> The smallest effect this design could detect, at this scale, exceeds the kill line I preregistered before running it. This single-seed run cannot distinguish the two arms. I'm saying that plainly rather than reading a signal into noise.
+        </div>
+
+        <h2>What survived the null result anyway</h2>
+
+        <p>A null on the headline question doesn't mean the run taught me nothing. Across eight live runs and about 3.4 million tokens:</p>
+
+        <ul>
+          <li>A scored node costs roughly <strong>3&times;</strong> as much with memory as without it, and over half of that spend goes to the inner loop rather than to attempting the task itself.</li>
+          <li>Replaying tasks the agent had already failed &mdash; an upper bound on what a live note can do &mdash; a 7B-parameter task model applying a correct <strong>hand-written rule</strong> hits <strong>59.3%</strong> against an <strong>11.1%</strong> base rate. Its own notes, even after a reflection prompt I had to repair, reach only <strong>25.9%</strong>.</li>
+          <li>The promotion ladder's top rung fired 96 times and installed nothing &mdash; one deterministic failure replayed over and over, not a capability wall.</li>
+          <li>A preregistered paired check across the whole rule pool scored 5 of 8 with the constraints left unstated against 7 of 8 with them stated &mdash; suggestive, not significant, and I'm not rounding that up.</li>
+          <li>I documented nine classes of silent instrument failure, and a tenth in the repair that closed them &mdash; each one would have printed a plausible <em>wrong</em> number under a passing test suite.</li>
+        </ul>
+
+        <figure>
+          <svg viewBox="0 0 460 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bar chart: base rate 11.1 percent, own notes 25.9 percent, hand-written rule 59.3 percent.">
+            <line x1="50" y1="180" x2="420" y2="180" stroke="rgba(15,23,42,0.15)" stroke-width="1"/>
+
+            <rect x="90" y="158" width="60" height="22" rx="4" fill="#c7d2fe"/>
+            <text x="120" y="151" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="13" font-weight="700" fill="rgba(15,23,42,0.85)">11.1%</text>
+            <text x="120" y="198" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="10" fill="rgba(15,23,42,0.6)">Base rate</text>
+
+            <rect x="210" y="128" width="60" height="52" rx="4" fill="#818cf8"/>
+            <text x="240" y="121" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="13" font-weight="700" fill="rgba(15,23,42,0.85)">25.9%</text>
+            <text x="240" y="198" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="10" fill="rgba(15,23,42,0.6)">Agent's own notes</text>
+
+            <rect x="330" y="61" width="60" height="119" rx="4" fill="#4f46e5"/>
+            <text x="360" y="54" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="13" font-weight="700" fill="rgba(15,23,42,0.85)">59.3%</text>
+            <text x="360" y="198" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="10" fill="rgba(15,23,42,0.6)">Hand-written rule</text>
+          </svg>
+          <figcaption>Replaying tasks the agent had already failed: a person-written rule clears them far more often than the agent's own notes about the same failure.</figcaption>
+        </figure>
+
+        <div class="insight-box">
+          <strong>Why this shaped Re-Forge.</strong> The promotion ladder here &mdash; note, rule, hook &mdash; is the same shape I use in Re-Forge's candidate ladder: observed, ready for review, approved. And the lesson about silent instrument failure is why Re-Forge treats every benchmark number as something to be re-derived from the trace, not trusted because a dashboard displayed it.
+        </div>
+
+        <p>The line I keep coming back to from this one: the instrument, not the search, is the result.</p>
+
+        <h2>Research Paper</h2>
+        <div class="paper-ref">
+          <div class="paper-title">Adaptation Without Inheritance</div>
+          <div class="paper-authors">GlobalSouthAI Workshop, NeurIPS 2026 (Submission)</div>
+          <a href="https://openreview.net/pdf?id=g5kYSKAYGu" target="_blank" rel="noopener">PDF</a> &nbsp;·&nbsp;
+          <a href="https://openreview.net/forum?id=g5kYSKAYGu" target="_blank" rel="noopener">OpenReview</a>
+        </div>
+
+      </div>
+    </article>
+  </main>
+  <footer class="site-footer">&copy; 2026 Shine Gupta</footer>
+</body>
+</html>

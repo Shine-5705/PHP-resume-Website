@@ -196,10 +196,36 @@ and LLM systems for global clients. Specialized in RAG, RLHF, SFT, LLM evaluatio
             'venue' => 'ICASET-2026',
             'period' => '2026',
             'status' => 'Accepted'
+        ],
+        [
+            'title' => 'The Self-Confirmation Gap: Deployed Coding Agents Cannot Measure Their Own Improvement',
+            'authors' => 'Shine Gupta, S Akash',
+            'venue' => 'GlobalSouthAI Workshop, NeurIPS 2026',
+            'period' => 'Sep 2026',
+            'status' => 'Submitted',
+            'url' => 'https://openreview.net/forum?id=Yk6n7XsIS3',
+            'blogUrl' => '/blog/self-confirmation-gap.html'
+        ],
+        [
+            'title' => 'Adaptation Without Inheritance',
+            'authors' => 'S Akash, Shine Gupta',
+            'venue' => 'GlobalSouthAI Workshop, NeurIPS 2026',
+            'period' => 'Aug 2026',
+            'status' => 'Submitted',
+            'url' => 'https://openreview.net/forum?id=g5kYSKAYGu',
+            'blogUrl' => '/blog/adaptation-without-inheritance.html'
         ]
     ];
 
     $news = [
+        [
+            'date' => 'Sep 2026',
+            'text' => 'Submitted <a href="/blog/self-confirmation-gap.html">The Self-Confirmation Gap</a> to the GlobalSouthAI Workshop, NeurIPS 2026.'
+        ],
+        [
+            'date' => 'Aug 2026',
+            'text' => 'Submitted <a href="/blog/adaptation-without-inheritance.html">Adaptation Without Inheritance</a> to the GlobalSouthAI Workshop, NeurIPS 2026.'
+        ],
         [
             'date' => 'May 2026',
             'text' => 'Two papers with <strong>S Akash</strong> accepted as posters to the SCALE Workshop @ ICML 2026: <a href="/blog/compute-aware-mixture-of-agents.html">Compute-Aware Mixture-of-Agents</a> and <a href="/blog/who-hallucinates-tools.html">Who Hallucinates Tools, How Often, and What Fixes It?</a>'
