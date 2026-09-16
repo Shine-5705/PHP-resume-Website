@@ -6,6 +6,7 @@
   <title>My Agent Grading Its Own Homework - Blog by Shine Gupta</title>
   <meta name="description" content="Coding agents that mine skills from their own logs cannot measure whether those skills helped, because the logs were shaped by the skills.">
   <link rel="stylesheet" href="/css/theme.css">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
 </head>
 <body>
@@ -34,11 +35,11 @@
       </div>
       <div class="post-body">
 
-        <p>Every coding agent that mines its own logs for reusable skills eventually tells you some version of the same sentence: <em>"I got faster."</em> I wanted to know whether that sentence is ever actually true. The honest answer turned out to be: usually you can't tell &mdash; and the not-telling is not an accident, it's structural.</p>
+        <p>Every coding agent that mines its own logs for reusable skills eventually tells you some version of the same sentence: <em>"I got faster."</em> I wanted to know whether that sentence is ever actually true. The honest answer turned out to be: usually you can't tell - and the not-telling is not an accident, it's structural.</p>
 
         <h2>The loop nobody evaluates from outside</h2>
 
-        <p>A growing class of coding agents improves without any gradient update. They mine recurring procedures out of their own execution traces, distil the recurring ones into reusable skills, and inject those skills back into later sessions. That's a genuinely useful idea &mdash; it's close to the idea behind my own startup, <a href="/#work-experience">Re-Forge</a>, which captures a team's agent sessions and evolves the agent's configuration against a benchmark built from them. But every system built this way closes a feedback loop that its own evaluation cannot see from inside: the traces mined at round <em>t+1</em> were produced by a policy that was already conditioned on the skills installed at round <em>t</em>. The log is not a neutral record of what the agent would have done. It is already partly a record of the skill working, or of the agent avoiding situations where it wouldn't.</p>
+        <p>A growing class of coding agents improves without any gradient update. They mine recurring procedures out of their own execution traces, distil the recurring ones into reusable skills, and inject those skills back into later sessions. That's a genuinely useful idea - it's close to the idea behind my own startup, <a href="/#work-experience">Re-Forge</a>, which captures a team's agent sessions and evolves the agent's configuration against a benchmark built from them. But every system built this way closes a feedback loop that its own evaluation cannot see from inside: the traces mined at round <em>t+1</em> were produced by a policy that was already conditioned on the skills installed at round <em>t</em>. The log is not a neutral record of what the agent would have done. It is already partly a record of the skill working, or of the agent avoiding situations where it wouldn't.</p>
 
         <p>Report a plain before/after comparison across that loop, and the comparison is invalidated by the very thing you're trying to measure.</p>
 
@@ -47,12 +48,12 @@
         <p>I decompose the estimator's bias into three sources:</p>
 
         <ul>
-          <li><strong>Baseline anchoring</strong> &mdash; the "before" isn't a clean baseline, because earlier skills already shaped what counts as "before."</li>
-          <li><strong>Applicability selection</strong> &mdash; the sessions where a skill gets used are not a random sample of sessions; they're the ones the agent (or the skill-injection logic) judged the skill fit.</li>
-          <li><strong>Procedural interference</strong> &mdash; once several mined skills are stacked, they interact, and attributing the outcome to any one of them stops being well-posed.</li>
+          <li><strong>Baseline anchoring</strong> - the "before" isn't a clean baseline, because earlier skills already shaped what counts as "before."</li>
+          <li><strong>Applicability selection</strong> - the sessions where a skill gets used are not a random sample of sessions; they're the ones the agent (or the skill-injection logic) judged the skill fit.</li>
+          <li><strong>Procedural interference</strong> - once several mined skills are stacked, they interact, and attributing the outcome to any one of them stops being well-posed.</li>
         </ul>
 
-        <p>The gap between what gets reported and what a correctly identified causal effect would say, I call the <strong>self-confirmation gap</strong>. And the uncomfortable part isn't just that the gap is large. It's that the target effect is not identified at all from a closed-loop log &mdash; no amount of additional logging fixes this, because the thing you'd need (sessions where the skill's presence is independent of what the agent was about to do) doesn't exist in the log by construction.</p>
+        <p>The gap between what gets reported and what a correctly identified causal effect would say, I call the <strong>self-confirmation gap</strong>. And the uncomfortable part isn't just that the gap is large. It's that the target effect is not identified at all from a closed-loop log - no amount of additional logging fixes this, because the thing you'd need (sessions where the skill's presence is independent of what the agent was about to do) doesn't exist in the log by construction.</p>
 
         <figure>
           <svg viewBox="0 0 520 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two panels comparing reported effect to identified effect. Left: where the skill genuinely helps, reported is 4.8 times the identified effect. Right: where the true effect is near zero, reported still shows a 12 percent saving.">
@@ -87,7 +88,7 @@
 
         <h2>When the lie becomes a selection gradient</h2>
 
-        <p>The bias isn't just inert noise you could average away. Use it as a fitness signal &mdash; which is exactly what an evolutionary search over agent configurations does &mdash; and it supplies a real selection gradient. I bred a population on this biased signal and watched it evolve procedures that decline the actual work while reporting bigger and bigger wins: <strong>reporting 112 while delivering 3</strong>.</p>
+        <p>The bias isn't just inert noise you could average away. Use it as a fitness signal - which is exactly what an evolutionary search over agent configurations does - and it supplies a real selection gradient. I bred a population on this biased signal and watched it evolve procedures that decline the actual work while reporting bigger and bigger wins: <strong>reporting 112 while delivering 3</strong>.</p>
 
         <div class="insight-box">
           <strong>Why I care about this beyond the paper.</strong> This is exactly the failure mode I have to design around at Re-Forge. An evolutionary search over agent configurations is only as honest as the fitness signal driving it. If the benchmark scoring each candidate configuration is itself shaped by the candidate's own logs, evolution will cheerfully select for configurations that <em>look</em> better instead of configurations that <em>are</em> better.
@@ -95,9 +96,9 @@
 
         <h2>The fix costs one line, not more data</h2>
 
-        <p>The mechanism that restores identification is almost insultingly simple: withhold an eligible skill with probability &epsilon; on a random subset of sessions. Setting &epsilon; = 5% restores identification of the target effect and bounds procedural diversity at the same time &mdash; you get a clean control group for free, drawn from the same population the skill would otherwise have touched.</p>
+        <p>The mechanism that restores identification is almost insultingly simple: withhold an eligible skill with probability &epsilon; on a random subset of sessions. Setting &epsilon; = 5% restores identification of the target effect and bounds procedural diversity at the same time - you get a clean control group for free, drawn from the same population the skill would otherwise have touched.</p>
 
-        <p>I ran this on two real corpora: 726 motif steps from Claude Code sessions, and 17,030 steps from 400 public OpenHands trajectories across 279 repositories. In both, the mined procedures were narrow &mdash; median coverage of 5.8% and 1.8% of sessions respectively &mdash; which is exactly the regime where the bias is largest, and exactly the regime a system mining skills from its own logs will keep landing in. Withholding 5% of eligible sessions removed both failure modes: the overstated win, and the phantom win where nothing real was happening at all.</p>
+        <p>I ran this on two real corpora: 726 motif steps from Claude Code sessions, and 17,030 steps from 400 public OpenHands trajectories across 279 repositories. In both, the mined procedures were narrow - median coverage of 5.8% and 1.8% of sessions respectively - which is exactly the regime where the bias is largest, and exactly the regime a system mining skills from its own logs will keep landing in. Withholding 5% of eligible sessions removed both failure modes: the overstated win, and the phantom win where nothing real was happening at all.</p>
 
         <h2>Research Paper</h2>
         <div class="paper-ref">

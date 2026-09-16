@@ -32,7 +32,7 @@ and LLM systems for global clients. Specialized in RAG, RLHF, SFT, LLM evaluatio
     $workExperience = [
         [
             'company' => 'Re-Forge',
-            'url' => '#',
+            'url' => 'https://theadaply.com',
             'position' => 'Founder',
             'period' => '2026 - Present',
             'description' => 'Building an evolution layer for AI coding agents that learns from real engineering trajectories.',
@@ -45,12 +45,12 @@ and LLM systems for global clients. Specialized in RAG, RLHF, SFT, LLM evaluatio
         [
             'company' => 'Gnani.ai',
             'url' => 'https://www.gnani.ai/',
-            'position' => 'Full-Stack Developer — Founder\'s Office',
+            'position' => 'Full-Stack Developer - Founder\'s Office',
             'period' => 'Apr 2026 - Present',
             'location' => 'Bengaluru, India',
             'description' => 'Sole builder in the Founder\'s Office shipping production full-stack applications for enterprise voice-agent and customer portal products.',
             'details' => [
-                'Designed, built, and deployed 3 production full-stack web applications in 2 months—customer-facing portals and voice-agent products—owning frontend (React/Next.js), backend APIs, auth, and cloud deployment.',
+                'Designed, built, and deployed 3 production full-stack web applications in 2 months - customer-facing portals and voice-agent products - owning frontend (React/Next.js), backend APIs, auth, and cloud deployment.',
                 'Delivered directly to US and Japanese enterprise clients, iterating on their feedback to ship quickly and reliably.'
             ],
             'tags' => ['React', 'Next.js', 'FastAPI', 'AWS', 'TypeScript', 'OAuth']
@@ -72,7 +72,7 @@ and LLM systems for global clients. Specialized in RAG, RLHF, SFT, LLM evaluatio
             'url' => 'https://valura.ai/',
             'position' => 'AI Engineer (reporting to CTO)',
             'period' => 'Jan 2026 - Apr 2026',
-            'location' => 'Bengaluru, India',
+            'location' => 'UAE (Remote)',
             'description' => 'Built production multi-agent LLM systems with guardrails, evaluation, and behavioral monitoring for enterprise deployment.',
             'details' => [
                 'Designed and shipped a production multi-agent LLM architecture with guardrails, tool-use constraints, memory, and evaluation hooks for behavioral monitoring, cutting unsafe responses.',
@@ -97,7 +97,7 @@ and LLM systems for global clients. Specialized in RAG, RLHF, SFT, LLM evaluatio
             'url' => 'https://turing.com/',
             'position' => 'Data Scientist',
             'period' => 'Oct 2024 - Jan 2026',
-            'location' => 'Remote',
+            'location' => 'United States (Remote)',
             'description' => 'Data Scientist specializing in AI and machine learning solutions for software performance enhancement.',
             'details' => [
                 'Led an 8-person team running RLHF and SFT fine-tuning to align LLM outputs with target behavioral specs; diagnosed reward-model failure modes and multi-turn distributional drift.',
@@ -138,7 +138,7 @@ and LLM systems for global clients. Specialized in RAG, RLHF, SFT, LLM evaluatio
             'url' => 'https://www.gradstem.com/',
             'position' => 'Data Scientist',
             'period' => 'Jul 2024 - Nov 2024',
-            'location' => 'Remote',
+            'location' => 'United States (Remote)',
             'description' => 'Developed AI-based autonomous agents and automation solutions for business use cases.',
             'details' => [
                 'Developed AI-based autonomous agents for form-filling and chatbot applications using NLP techniques.',
@@ -255,12 +255,13 @@ and LLM systems for global clients. Specialized in RAG, RLHF, SFT, LLM evaluatio
             'period' => '2026',
             'location' => 'Singapore',
             'project' => 're-forge',
-            'description' => 'Back-to-back hackathons in Singapore during SuperAI 2026. Selected as 1 of 200 builders worldwide for the NEXT Hackathon by SuperAI—a 36-hour live build during SuperAI 2026. At the UCWS Singapore Hackathon, a global open-source event with 150+ projects, our team placed in the top 20 and won.',
+            'description' => 'Back-to-back hackathons in Singapore during SuperAI 2026. Selected as 1 of 200 builders worldwide for the NEXT Hackathon by SuperAI - a 36-hour live build during SuperAI 2026. At the UCWS Singapore Hackathon, a global open-source event with 150+ projects, our team placed in the top 20 and won.',
             'highlights' => [
-                'Built re-forge with co-founder S Akash—a hardened operating procedure for coding agents (Claude Code, Cursor, Codex) that turns a single agent into a self-evolving team of specialists with adversarial gates, evals, durable memory, and on-disk evidence for every decision.',
+                'Built re-forge with co-founder S Akash - a hardened operating procedure for coding agents (Claude Code, Cursor, Codex) that turns a single agent into a self-evolving team of specialists with adversarial gates, evals, durable memory, and on-disk evidence for every decision.',
                 'NEXT Hackathon sharpened the approach; UCWS delivered the win.'
             ],
             'linkedin' => 'https://www.linkedin.com/feed/update/urn:li:activity:7475268078298112001/',
+            'image' => 'assets/images/hackathons/ucws-singapore.jpg',
             'tags' => ['AI Agents', 'Evals', 'SuperAI', 'UCWS', 're-forge']
         ],
         [
@@ -271,10 +272,11 @@ and LLM systems for global clients. Specialized in RAG, RLHF, SFT, LLM evaluatio
             'project' => 'ChatVerse',
             'description' => 'Won Best Project Award as a solo team at the Hack for the Green Bharat Hackathon hosted at Microsoft Office, organized by Pathway Hack in collaboration with Tech Masters India.',
             'highlights' => [
-                'Pitched ChatVerse—an AI-powered automation platform that lets users automate anything across social media and apps using plain English—earning an internship offer on the spot.',
+                'Pitched ChatVerse - an AI-powered automation platform that lets users automate anything across social media and apps using plain English - earning an internship offer on the spot.',
                 'Received outstanding feedback from judges and organizers, with strong engagement from fellow participants and mentors.'
             ],
             'linkedin' => 'https://www.linkedin.com/feed/update/urn:li:activity:7439776605562077184/',
+            'image' => 'assets/images/hackathons/hack-green-bharat.jpg',
             'tags' => ['ChatVerse', 'Microsoft', 'AI Automation', 'Sustainability']
         ],
         [
@@ -285,10 +287,11 @@ and LLM systems for global clients. Specialized in RAG, RLHF, SFT, LLM evaluatio
             'project' => 'Team CodeShine',
             'description' => 'Among 50,000+ participants, Team CodeShine (solo) emerged as a winner and presented at Meesho HQ in Bangalore.',
             'highlights' => [
-                'From ideation to presenting at Meesho HQ—a journey built on perseverance, passion, and the belief that even a solo team can shine bright.',
+                'From ideation to presenting at Meesho HQ - a journey built on perseverance, passion, and the belief that even a solo team can shine bright.',
                 'Mentored by Meesho engineers and leadership throughout the hackathon lifecycle.'
             ],
             'linkedin' => 'https://www.linkedin.com/feed/update/urn:li:activity:7359515286791729152/',
+            'image' => 'assets/images/hackathons/meesho-scriptedbyher.jpg',
             'tags' => ['Meesho', 'CodeShine', 'Innovation']
         ],
         [
@@ -297,12 +300,13 @@ and LLM systems for global clients. Specialized in RAG, RLHF, SFT, LLM evaluatio
             'period' => '2024',
             'location' => 'India',
             'project' => 'AR/VR + ML Product',
-            'description' => 'Built an AR/VR + ML prototype that peers initially called too ambitious. Submitted with no response for months—until an email confirmed selection as one of the top winners across India.',
+            'description' => 'Built an AR/VR + ML prototype that peers initially called too ambitious. Submitted with no response for months - until an email confirmed selection as one of the top winners across India.',
             'highlights' => [
-                'From rejection and silence to official recognition—a lesson in backing yourself even when no one else does.',
+                'From rejection and silence to official recognition - a lesson in backing yourself even when no one else does.',
                 'Developed a detailed prototype and presentation spanning machine learning and immersive technology.'
             ],
             'linkedin' => 'https://www.linkedin.com/posts/shine-gupta-62b22b264_5gandbeyondhackathon-innovation-machinelearning-activity-7314148995101073409-x7Pn',
+            'image' => 'assets/images/hackathons/5g-beyond.jpg',
             'tags' => ['AR/VR', 'Machine Learning', '5G']
         ],
         [
@@ -317,6 +321,7 @@ and LLM systems for global clients. Specialized in RAG, RLHF, SFT, LLM evaluatio
                 'Collaborated with teammates Neha Tomar, Rohit Kumar, and Nidhi Dwivedy on end-to-end data pipeline and model training.'
             ],
             'linkedin' => 'https://www.linkedin.com/posts/neha-tomar-5ab69726a_ai-machinelearning-ocr-ugcPost-7244372293588574208-TP08',
+            'image' => 'assets/images/hackathons/amazon-ml-challenge.jpg',
             'tags' => ['OCR', 'NER', 'Amazon ML', 'spaCy', 'PaddleOCR']
         ]
     ];
@@ -324,8 +329,8 @@ and LLM systems for global clients. Specialized in RAG, RLHF, SFT, LLM evaluatio
     $sideProjects = [
         [
             'name' => 'Re-Forge',
-            'url' => '#',
-            'description' => 'Evolution layer for AI coding agents that learns from real engineering trajectories—mining agent interactions, tool calls, failures, and successful resolutions to discover reusable behaviors and continuously improve organization-specific engineering tasks.',
+            'url' => 'https://theadaply.com',
+            'description' => 'Evolution layer for AI coding agents that learns from real engineering trajectories, mining agent interactions, tool calls, failures, and successful resolutions to discover reusable behaviors and continuously improve organization-specific engineering tasks.',
             'technologies' => ['AI Agents', 'Evals', 'Claude Code', 'Cursor', 'Codex', 'MCP', 'LangGraph'],
             'active' => true
         ],
@@ -346,7 +351,7 @@ and LLM systems for global clients. Specialized in RAG, RLHF, SFT, LLM evaluatio
         [
             'name' => 'CareMate',
             'url' => 'https://github.com/Shine-5705/CareMate-AI-Powered-Chronic-Disease-Monitoring-Remote-Care',
-            'description' => 'Multilingual LLM-powered healthcare assistant with RAG-based clinical reasoning, symptom triage, and personalized health guidance—reducing hallucinations by 30% through contextual medical retrieval.',
+            'description' => 'Multilingual LLM-powered healthcare assistant with RAG-based clinical reasoning, symptom triage, and personalized health guidance - reducing hallucinations by 30% through contextual medical retrieval.',
             'technologies' => ['React', 'TypeScript', 'Flask', 'PostgreSQL', 'RAG', 'TensorFlow.js', 'AssemblyAI'],
             'active' => true
         ],
@@ -421,7 +426,7 @@ and LLM systems for global clients. Specialized in RAG, RLHF, SFT, LLM evaluatio
             'name' => 'Shine Gupta',
             'description' => 'Founder, Re-Forge · Full-Stack Developer, Gnani.ai · AI Engineer & Researcher.',
             'location' => 'Bengaluru, India',
-            'about' => 'I\'m building Re-Forge, an evolution layer for AI coding agents that turns real engineering trajectories into agent improvements, and working full-stack in Gnani.ai\'s Founder\'s Office, where I\'ve shipped 3 production LLM and voice-agent applications in 2 months. My research looks at where self-improving agents actually break — tool hallucination, agents grading their own logs, and what a system learns versus what it\'s told. Two papers are accepted at the ICML 2026 SCALE Workshop, and two more are under review for the NeurIPS 2026 GlobalSouthAI Workshop. Before this, I founded Chatverse.io (500+ beta users, 3,500+ automations), built agent evaluation systems at Valura.ai, and won 9+ hackathons including UCWS Singapore.'
+            'about' => 'I\'m building Re-Forge, an evolution layer for AI coding agents that turns real engineering trajectories into agent improvements, and working full-stack in Gnani.ai\'s Founder\'s Office, where I\'ve shipped 3 production LLM and voice-agent applications in 2 months. My research looks at where self-improving agents actually break: tool hallucination, agents grading their own logs, and what a system learns versus what it\'s told. Two papers are accepted at the ICML 2026 SCALE Workshop, and two more are under review for the NeurIPS 2026 GlobalSouthAI Workshop. Before this, I founded Chatverse.io, built agent evaluation systems at Valura.ai, and won 9+ hackathons including UCWS Singapore.'
         ],
         'workExperience' => $workExperience,
         'skillCategories' => $skillCategories,

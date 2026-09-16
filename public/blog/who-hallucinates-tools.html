@@ -4,8 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Tools My Agent Made Up - Blog by Shine Gupta</title>
-  <meta name="description" content="Commercial frontier LLMs never hallucinate tool names on BFCL, open-weight models do — and a one-line, training-free re-prompt removes it.">
+  <meta name="description" content="Commercial frontier LLMs never hallucinate tool names on BFCL, open-weight models do - and a one-line, training-free re-prompt removes it.">
   <link rel="stylesheet" href="/css/theme.css">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
 </head>
 <body>
@@ -34,27 +35,27 @@
       </div>
       <div class="post-body">
 
-        <p>Accepted as a poster to the <strong>SCALE Workshop at ICML 2026</strong>, this paper is about a specific, measurable failure mode in tool-using agents: a model calling a tool that was never in its tool list &mdash; <em>tool-name hallucination</em> &mdash; and what actually makes it stop.</p>
+        <p>Accepted as a poster to the <strong>SCALE Workshop at ICML 2026</strong>, this paper is about a specific, measurable failure mode in tool-using agents: a model calling a tool that was never in its tool list - <em>tool-name hallucination</em> - and what actually makes it stop.</p>
 
         <h2>The problem</h2>
 
         <p>Tool-name hallucination is a known failure mode for agents that call functions, but most discussion of it is qualitative. I wanted a number: define a per-call <strong>Tool Fabrication Rate (TFR)</strong> and measure it directly on the Berkeley Function Calling Leaderboard (BFCL) multi-turn benchmark, across enough calls and enough model families that the number means something.</p>
 
         <div class="insight-box">
-          <strong>The headline result.</strong> Across 6,000+ opaque-baseline calls, every commercial frontier model we tested (five Anthropic 4.x versions, and OpenAI's gpt-4.x/4o/gpt-5 tiers) logged <strong>zero</strong> tool-name fabrications. Open-weight models &mdash; Qwen3, Qwen2.5, Llama &mdash; fabricated tools at up to <strong>10.4%</strong>.
+          <strong>The headline result.</strong> Across 6,000+ opaque-baseline calls, every commercial frontier model we tested (five Anthropic 4.x versions, and OpenAI's gpt-4.x/4o/gpt-5 tiers) logged <strong>zero</strong> tool-name fabrications. Open-weight models - Qwen3, Qwen2.5, Llama - fabricated tools at up to <strong>10.4%</strong>.
         </div>
 
         <h2>Why it matters more than it sounds</h2>
 
-        <p>A fabricated tool name isn't always a harmless dead end. Of the fabricated calls in the open-weight models, <strong>70%</strong> named execution-ready, state-changing actions &mdash; things like a fabricated <code>place_order</code> or <code>cancel_booking</code> call. Under a permissive executor that doesn't strictly validate against a registry before acting, that isn't a failed lookup, it's an unintended action. That's the part that makes the failure rate more than an academic curiosity for anyone deploying agents against real APIs.</p>
+        <p>A fabricated tool name isn't always a harmless dead end. Of the fabricated calls in the open-weight models, <strong>70%</strong> named execution-ready, state-changing actions - things like a fabricated <code>place_order</code> or <code>cancel_booking</code> call. Under a permissive executor that doesn't strictly validate against a registry before acting, that isn't a failed lookup, it's an unintended action. That's the part that makes the failure rate more than an academic curiosity for anyone deploying agents against real APIs.</p>
 
         <h2>The fix: Registry-Visible Reprompting</h2>
 
-        <p>The fix I propose, <strong>RVR (Registry-Visible Reprompting)</strong>, is deliberately boring: it's training-free middleware. On a registry miss &mdash; the model calls a tool that doesn't exist &mdash; RVR returns exactly one re-prompt wrapping a structured <code>tool_not_found</code> envelope, and lets the model try again with that signal. Across the pooled Qwen3 evaluation, RVR removed <strong>all twenty</strong> fabrications logged (Fisher's exact test, p = 3.5&times;10<sup>-5</sup> on 20/1,417 vs. 0/945).</p>
+        <p>The fix I propose, <strong>RVR (Registry-Visible Reprompting)</strong>, is deliberately boring: it's training-free middleware. On a registry miss - the model calls a tool that doesn't exist - RVR returns exactly one re-prompt wrapping a structured <code>tool_not_found</code> envelope, and lets the model try again with that signal. Across the pooled Qwen3 evaluation, RVR removed <strong>all twenty</strong> fabrications logged (Fisher's exact test, p = 3.5&times;10<sup>-5</sup> on 20/1,417 vs. 0/945).</p>
 
         <h2>The ablation that surprised me</h2>
 
-        <p>The more interesting finding is <em>why</em> RVR works. I ran a powered ablation swapping in a deliberately wrong registry list in place of the real one &mdash; and it recovered just as well (Fisher's exact, p = 1.0). In other words, the content of the registry doesn't drive the fix. What drives it is the <em>format</em> of the rejection: telling the model, in a structured way, that its call didn't resolve is enough on its own to make it stop fabricating and try a real tool. That's a cheaper and more portable fix than it first looks, since it means you don't need a perfectly maintained tool registry for the mitigation to work &mdash; you need the rejection message shaped right.</p>
+        <p>The more interesting finding is <em>why</em> RVR works. I ran a powered ablation swapping in a deliberately wrong registry list in place of the real one - and it recovered just as well (Fisher's exact, p = 1.0). In other words, the content of the registry doesn't drive the fix. What drives it is the <em>format</em> of the rejection: telling the model, in a structured way, that its call didn't resolve is enough on its own to make it stop fabricating and try a real tool. That's a cheaper and more portable fix than it first looks, since it means you don't need a perfectly maintained tool registry for the mitigation to work - you need the rejection message shaped right.</p>
 
         <div class="insight-box">
           <strong>The honest takeaway.</strong> Frontier commercial models don't currently need this fix on BFCL. Open-weight models deploying agentic tool-use in production do, and the fix is cheap: no fine-tuning, no retraining, just a well-formatted re-prompt on a registry miss.

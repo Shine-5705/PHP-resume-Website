@@ -201,25 +201,15 @@ a {
 }
 
 #social a:hover {
+  background: rgba(79, 70, 229, 0.12);
   transform: translateY(-2px);
-  filter: brightness(1.08);
 }
 
 #social img {
   width: 17px;
   height: 17px;
   display: block;
-  filter: brightness(0) invert(1);
 }
-
-/* colorful per-platform badges */
-#social a:nth-child(1) { background: #4f46e5; } /* website */
-#social a:nth-child(2) { background: #f97316; } /* mail */
-#social a:nth-child(3) { background: #22c55e; } /* phone */
-#social a:nth-child(4) { background: #24292e; } /* github */
-#social a:nth-child(5) { background: #4285f4; } /* google scholar */
-#social a:nth-child(6) { background: #0a66c2; } /* linkedin */
-#social a:nth-child(7) { background: #000000; } /* x */
 
 #cta {
   display: flex;
@@ -306,6 +296,15 @@ a {
 .card h3 {
   font-size: 1.1rem;
   color: rgba(15, 23, 42, 0.9);
+}
+
+.hackathon-image {
+  width: 100%;
+  max-height: 260px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 14px;
+  display: block;
 }
 
 .card a {

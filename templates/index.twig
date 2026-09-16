@@ -33,6 +33,7 @@
     <meta name="theme-color" content="#ededed">
     <meta name="application-name" content="{{ seo.site_name }}">
 
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
@@ -155,16 +156,19 @@
                     <h3>{% if pub.url %}<a href="{{ pub.url }}" target="_blank" rel="noopener noreferrer">{{ pub.title }}</a>{% else %}{{ pub.title }}{% endif %}</h3>
                     <div class="card-meta">{{ pub.status }} · {{ pub.period }}</div>
                 </div>
-                <div class="card-role">{{ pub.authors }} — {{ pub.venue }}</div>
+                <div class="card-role">{{ pub.authors }} - {{ pub.venue }}</div>
             </article>
             {% endfor %}
         </section>
 
         <section class="section-block">
             <h2 id="hackathons">Hackathons</h2>
-            <p class="section-intro">9+ hackathon wins — a glimpse of recent highlights.</p>
+            <p class="section-intro">9+ hackathon wins - a glimpse of recent highlights.</p>
             {% for hackathon in hackathons %}
             <article class="card">
+                {% if hackathon.image %}
+                <img class="hackathon-image" src="{{ hackathon.image }}" alt="Photo from {{ hackathon.title }}">
+                {% endif %}
                 <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;">
                     <h3>{{ hackathon.title }} <span class="tag-pill">{{ hackathon.result }}</span></h3>
                     <div class="card-meta">{{ hackathon.period }} · {{ hackathon.location }}</div>

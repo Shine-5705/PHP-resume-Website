@@ -6,6 +6,7 @@
   <title>What Agents Forget on Purpose - Blog by Shine Gupta</title>
   <meta name="description" content="Giving evolving LLM agents a bounded lifetime whose memory is wiped between generations, so innate and learned performance can be measured apart.">
   <link rel="stylesheet" href="/css/theme.css">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
 </head>
 <body>
@@ -34,11 +35,11 @@
       </div>
       <div class="post-body">
 
-        <p>What your body learns in your lifetime does not get written into the genes your children inherit. Biologists call that separation the <strong>Weismann barrier</strong>. I wanted to know what happens if you build the same barrier into a population of self-improving coding agents &mdash; on purpose, by construction, not as an afterthought.</p>
+        <p>What your body learns in your lifetime does not get written into the genes your children inherit. Biologists call that separation the <strong>Weismann barrier</strong>. I wanted to know what happens if you build the same barrier into a population of self-improving coding agents - on purpose, by construction, not as an afterthought.</p>
 
         <h2>The assumption I set out to break</h2>
 
-        <p>The Darwin G&ouml;del Machine lineage replaces the original G&ouml;del machine's proof obligation with empirical validation: a node in the search is scored as an exchangeable set of task outcomes. Written down as an assumption, that's time-homogeneity &mdash; the idea that a node's score today would look the same tomorrow, memory and all. I broke that by construction. Each member of my evolving population gets a bounded lifetime, split down the middle by a Weismann barrier. The <strong>germline</strong> &mdash; the agent's code and a handful of tuning numbers &mdash; crosses into the child. The <strong>soma</strong> &mdash; everything the agent writes down for itself from its own failures during that one lifetime &mdash; is destroyed at the generation boundary.</p>
+        <p>The Darwin G&ouml;del Machine lineage replaces the original G&ouml;del machine's proof obligation with empirical validation: a node in the search is scored as an exchangeable set of task outcomes. Written down as an assumption, that's time-homogeneity - the idea that a node's score today would look the same tomorrow, memory and all. I broke that by construction. Each member of my evolving population gets a bounded lifetime, split down the middle by a Weismann barrier. The <strong>germline</strong> - the agent's code and a handful of tuning numbers - crosses into the child. The <strong>soma</strong> - everything the agent writes down for itself from its own failures during that one lifetime - is destroyed at the generation boundary.</p>
 
         <figure>
           <svg viewBox="0 0 520 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram: a parent agent crosses a Weismann barrier into a child. The germline, code and tuning numbers, passes through. The soma, memory written during one lifetime, is wiped at the barrier.">
@@ -73,7 +74,7 @@
 
         <h2>Separating innate from learned</h2>
 
-        <p>Inside one lifetime, a failure can climb a small ladder: from a <em>note</em>, to a <em>rule</em> once it recurs and the fix is shown to replay, to a <em>hook</em>, a small program. Re-evaluating the best agents twice &mdash; once with memory wiped, once intact &mdash; separates what they innately are from what they merely learned during the run. I also built in a preregistered liveness gate that refuses to read a null result through machinery it cannot first show was actually running. That gate matters more than it sounds: it's the difference between "the effect isn't there" and "my harness silently stopped measuring."</p>
+        <p>Inside one lifetime, a failure can climb a small ladder: from a <em>note</em>, to a <em>rule</em> once it recurs and the fix is shown to replay, to a <em>hook</em>, a small program. Re-evaluating the best agents twice - once with memory wiped, once intact - separates what they innately are from what they merely learned during the run. I also built in a preregistered liveness gate that refuses to read a null result through machinery it cannot first show was actually running. That gate matters more than it sounds: it's the difference between "the effect isn't there" and "my harness silently stopped measuring."</p>
 
         <div class="insight-box">
           <strong>The honest result.</strong> The smallest effect this design could detect, at this scale, exceeds the kill line I preregistered before running it. This single-seed run cannot distinguish the two arms. I'm saying that plainly rather than reading a signal into noise.
@@ -85,10 +86,10 @@
 
         <ul>
           <li>A scored node costs roughly <strong>3&times;</strong> as much with memory as without it, and over half of that spend goes to the inner loop rather than to attempting the task itself.</li>
-          <li>Replaying tasks the agent had already failed &mdash; an upper bound on what a live note can do &mdash; a 7B-parameter task model applying a correct <strong>hand-written rule</strong> hits <strong>59.3%</strong> against an <strong>11.1%</strong> base rate. Its own notes, even after a reflection prompt I had to repair, reach only <strong>25.9%</strong>.</li>
-          <li>The promotion ladder's top rung fired 96 times and installed nothing &mdash; one deterministic failure replayed over and over, not a capability wall.</li>
-          <li>A preregistered paired check across the whole rule pool scored 5 of 8 with the constraints left unstated against 7 of 8 with them stated &mdash; suggestive, not significant, and I'm not rounding that up.</li>
-          <li>I documented nine classes of silent instrument failure, and a tenth in the repair that closed them &mdash; each one would have printed a plausible <em>wrong</em> number under a passing test suite.</li>
+          <li>Replaying tasks the agent had already failed - an upper bound on what a live note can do - a 7B-parameter task model applying a correct <strong>hand-written rule</strong> hits <strong>59.3%</strong> against an <strong>11.1%</strong> base rate. Its own notes, even after a reflection prompt I had to repair, reach only <strong>25.9%</strong>.</li>
+          <li>The promotion ladder's top rung fired 96 times and installed nothing - one deterministic failure replayed over and over, not a capability wall.</li>
+          <li>A preregistered paired check across the whole rule pool scored 5 of 8 with the constraints left unstated against 7 of 8 with them stated - suggestive, not significant, and I'm not rounding that up.</li>
+          <li>I documented nine classes of silent instrument failure, and a tenth in the repair that closed them - each one would have printed a plausible <em>wrong</em> number under a passing test suite.</li>
         </ul>
 
         <figure>
@@ -111,7 +112,7 @@
         </figure>
 
         <div class="insight-box">
-          <strong>Why this shaped Re-Forge.</strong> The promotion ladder here &mdash; note, rule, hook &mdash; is the same shape I use in Re-Forge's candidate ladder: observed, ready for review, approved. And the lesson about silent instrument failure is why Re-Forge treats every benchmark number as something to be re-derived from the trace, not trusted because a dashboard displayed it.
+          <strong>Why this shaped Re-Forge.</strong> The promotion ladder here - note, rule, hook - is the same shape I use in Re-Forge's candidate ladder: observed, ready for review, approved. And the lesson about silent instrument failure is why Re-Forge treats every benchmark number as something to be re-derived from the trace, not trusted because a dashboard displayed it.
         </div>
 
         <p>The line I keep coming back to from this one: the instrument, not the search, is the result.</p>
